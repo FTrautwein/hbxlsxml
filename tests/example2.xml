@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?mso-application progid="Excel.Sheet"?>
+<Workbook
+xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:x="urn:schemas-microsoft-com:office:excel"
+xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+xmlns:html="http://www.w3.org/TR/REC-html40">
+<DocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
+   <Title>My Demo Doc</Title>
+   <Author>Robert F Greer</Author>
+   <Created>20190418T10:51:10Z</Created>
+   <Manager>Wife</Manager>
+   <Company>Greers.Org</Company>
+   <Version>11.9999</Version>
+</DocumentProperties>
+<ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel" />
+<Styles>
+   <Style ss:ID="DEFAULT" >
+      <Alignment ss:Vertical="Bottom"/>
+      <NumberFormat/>
+      <Protection/>
+   </Style>
+   <Style ss:ID="left_rotate60_big" >
+      <Alignment ss:Horizontal="Left" ss:Rotate="60"/>
+      <Font ss:Size="10" ss:Color="Automatic"/>
+      <NumberFormat/>
+      <Protection/>
+   </Style>
+   <Style ss:ID="verticaltext_left" >
+      <Alignment ss:Horizontal="Left"    ss:VerticalText="1"/>
+      <NumberFormat/>
+      <Protection/>
+   </Style>
+   <Style ss:ID="wraptext_top" >
+      <Alignment ss:Vertical="Top"    ss:WrapText="1"/>
+      <NumberFormat/>
+      <Protection/>
+   </Style>
+   <Style ss:ID="my style" >
+      <Font ss:Color="#FFFFFF" ss:Bold="1" ss:Italic="1"  ss:Underline="DoubleAccounting"/>
+      <Interior ss:Color="#000000" ss:Pattern="Solid"/>
+      <NumberFormat ss:Format="mm/dd/yy\ hh:mm:ss"/>
+      <Protection/>
+   </Style>
+</Styles>
+<Worksheet ss:Name="Alignment" >
+   <Table>
+      <Row ss:Index="1"  >
+         <Cell ss:StyleID="left_rotate60_big" ss:Index="1">
+            <Data ss:Type="String">left_rotate45</Data>
+         </Cell>
+         <Cell ss:StyleID="verticaltext_left" ss:Index="2">
+            <Data ss:Type="String">vertical left</Data>
+         </Cell>
+         <Cell ss:StyleID="wraptext_top" ss:Index="3">
+            <Data ss:Type="String">this text has been wrapped and is aligned at the top</Data>
+         </Cell>
+      </Row>
+   </Table>
+</Worksheet>
+<Worksheet ss:Name="Formulas" >
+   <Table>
+      <Column ss:Index="1" ss:AutoFitWidth="0" ss:Width="100"/>
+      <Row ss:Index="1"  >
+         <Cell ss:Index="1">
+            <Data ss:Type="String">Number</Data>
+         </Cell>
+         <Cell ss:Index="2">
+            <Data ss:Type="Number">50.000000</Data>
+         </Cell>
+      </Row>
+      <Row ss:Index="2"  >
+         <Cell ss:Index="1">
+            <Data ss:Type="String">Number</Data>
+         </Cell>
+         <Cell ss:Index="2">
+            <Data ss:Type="Number">30.000000</Data>
+         </Cell>
+      </Row>
+      <Row ss:Index="3"  >
+         <Cell ss:Index="1">
+            <Data ss:Type="String">Number</Data>
+         </Cell>
+         <Cell ss:Index="2">
+            <Data ss:Type="Number">20.000000</Data>
+         </Cell>
+      </Row>
+      <Row ss:Index="4"  >
+         <Cell ss:Index="1">
+            <Data ss:Type="String">=SUM(R[-3]C:R[-1]C)</Data>
+         </Cell>
+         <Cell ss:Index="2"   ss:Formula="=SUM(R[-3]C:R[-1]C)">
+            <Data ss:Type="String"></Data>
+         </Cell>
+      </Row>
+      <Row ss:Index="5"  >
+         <Cell ss:Index="1">
+            <Data ss:Type="String">=SUM(R1C2:R3C2)</Data>
+         </Cell>
+         <Cell ss:Index="2"   ss:Formula="=SUM(R1C1:R3C2)">
+            <Data ss:Type="String"></Data>
+         </Cell>
+      </Row>
+   </Table>
+</Worksheet>
+<Worksheet ss:Name="more formatting" >
+   <Table>
+      <Row ss:Index="1"  >
+         <Cell ss:StyleID="my style" ss:Index="1">
+            <Data ss:Type="String">04/18/19</Data>
+         </Cell>
+      </Row>
+      <Row ss:Index="2"  >
+         <Cell ss:StyleID="my style" ss:Index="1"  ss:MergeAcross="4" ss:MergeDown="2">
+            <Data ss:Type="String">formatted text + cell color + merged + underlined</Data>
+         </Cell>
+      </Row>
+   </Table>
+</Worksheet>
+</Workbook>
