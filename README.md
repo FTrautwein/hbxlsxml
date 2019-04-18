@@ -1,5 +1,5 @@
 # hbxlsxml
-ExcelWriterXML
+This was based on https://sourceforge.net/projects/excelwriterxml/
 
 Set of classes for Harbour that allow Excel XML 2003 files to be generated dynamically.
 
