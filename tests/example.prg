@@ -177,35 +177,35 @@ PROCEDURE Main()
    xDataImp := DTOC(DATE())
    xTitulo := "RELATÓRIO PARA DEMONSTRAR XML EXCEL"
    xPeriodo := DTOC(DATE()-49-40) + " a " + DTOC(DATE()-49-1)
-   xOrdem  := "DATA DE EMISSAO"
+   xOrdem  := "DATA DE EMISSÃO"
 
    nLinha := 0
 
-   oObj:writeString( ++nLinha, 1, xEmpresa , "Cabec" )
+   oObj:writeString( ++nLinha, 1, hb_StrToUTF8(xEmpresa) , "Cabec" )
    oObj:cellMerge(     nLinha, 1, 5, 0 )
-   oObj:writeString(   nLinha, 12, "Data:" + xDataImp , "CabecRight" )
+   oObj:writeString(   nLinha, 12, hb_StrToUTF8("Data:" + xDataImp) , "CabecRight" )
    oObj:cellMerge(     nLinha, 12, 1, 0 )
-   oObj:writeString( ++nLinha, 1, xTitulo  , "Cabec" )
+   oObj:writeString( ++nLinha, 1, hb_StrToUTF8(xTitulo)  , "Cabec" )
    oObj:cellMerge(     nLinha, 1, 5, 0 )
-   oObj:writeString( ++nLinha, 1, xPeriodo , "Cabec" )
+   oObj:writeString( ++nLinha, 1, hb_StrToUTF8(xPeriodo) , "Cabec" )
    oObj:cellMerge(     nLinha, 1, 5, 0 )
-   oObj:writeString( ++nLinha, 1, xOrdem   , "Cabec" )
+   oObj:writeString( ++nLinha, 1, hb_StrToUTF8(xOrdem)   , "Cabec" )
    oObj:cellMerge(     nLinha, 1, 5, 0 )
 
    oObj := oSheet
-   oObj:writeString( ++nLinha,  1, "N.Fiscal"          , "textLeftBoldCor" )
-   oObj:writeString(   nLinha,  2, "TM"                , "textLeftBoldCor" )
-   oObj:writeString(   nLinha,  3, "Data Movto"        , "textLeftBoldCor" )
-   oObj:writeString(   nLinha,  4, "Data Emissão"      , "textLeftBoldCor" )
-   oObj:writeString(   nLinha,  5, "CFOP"              , "textLeftBoldCor" )
-   oObj:writeString(   nLinha,  6, "Código"            , "textLeftBoldCor" )
-   oObj:writeString(   nLinha,  7, "Cliente/Fornecedor", "textLeftBoldCor" )
-   oObj:writeString(   nLinha,  8, "UF"                , "textLeftBoldCor" )
-   oObj:writeString(   nLinha,  9, "Vlr.Tot."          , "textRightBoldCor" )
-   oObj:writeString(   nLinha, 10, "Base Cálc."        , "textRightBoldCor" )
-   oObj:writeString(   nLinha, 11, "Vlr ICMS"          , "textRightBoldCor" )
-   oObj:writeString(   nLinha, 12, "Base IPI"          , "textRightBoldCor" )
-   oObj:writeString(   nLinha, 13, "Valor IPI"         , "textRightBoldCor" )
+   oObj:writeString( ++nLinha,  1, hb_StrToUTF8("N.Fiscal"          ), "textLeftBoldCor" )
+   oObj:writeString(   nLinha,  2, hb_StrToUTF8("TM"                ), "textLeftBoldCor" )
+   oObj:writeString(   nLinha,  3, hb_StrToUTF8("Data Movto"        ), "textLeftBoldCor" )
+   oObj:writeString(   nLinha,  4, hb_StrToUTF8("Data Emissão"      ), "textLeftBoldCor" )
+   oObj:writeString(   nLinha,  5, hb_StrToUTF8("CFOP"              ), "textLeftBoldCor" )
+   oObj:writeString(   nLinha,  6, hb_StrToUTF8("Código"            ), "textLeftBoldCor" )
+   oObj:writeString(   nLinha,  7, hb_StrToUTF8("Cliente/Fornecedor"), "textLeftBoldCor" )
+   oObj:writeString(   nLinha,  8, hb_StrToUTF8("UF"                ), "textLeftBoldCor" )
+   oObj:writeString(   nLinha,  9, hb_StrToUTF8("Vlr.Tot."          ), "textRightBoldCor" )
+   oObj:writeString(   nLinha, 10, hb_StrToUTF8("Base Cálc."        ), "textRightBoldCor" )
+   oObj:writeString(   nLinha, 11, hb_StrToUTF8("Vlr ICMS"          ), "textRightBoldCor" )
+   oObj:writeString(   nLinha, 12, hb_StrToUTF8("Base IPI"          ), "textRightBoldCor" )
+   oObj:writeString(   nLinha, 13, hb_StrToUTF8("Valor IPI"         ), "textRightBoldCor" )
 
    // CODEPAGE TEST
    aNames:= {;
@@ -271,16 +271,17 @@ PROCEDURE Main()
    xqtddoc := xttotnot := xtbascal := xtvlricm := xtbasipi := xtvlripi := 0
 
    FOR i := 1 TO 40
+      nLinha++
       oObj := oSheet
-      oObj:writeString( ++nLinha, 1, aDoc[ i, 1 ], "textLeft" )
-      oObj:writeString( nLinha, 2, aDoc[ i, 2 ], "textLeft" )
-      oObj:writeString( nLinha, 3, DToC( aDoc[ i, 3 ] ), "textLeft" )
-      oObj:writeString( nLinha, 4, DToC( aDoc[ i, 4 ] ), "textLeft" )
-      oObj:writeString( nLinha, 5, aDoc[ i, 5 ], "textLeft" )
-      oObj:writeString( nLinha, 6, aDoc[ i, 6 ], "textLeft" )
-      oObj:writeString( nLinha, 7, aDoc[ i, 7 ], "textLeft" )
-      oObj:writeString( nLinha, 8, aDoc[ i, 8 ], "textLeft" )
-      oObj:writeNumber( nLinha, 9, aDoc[ i, 9 ], "numberRight" )
+      oObj:writeString( nLinha,  1, hb_StrToUTF8(aDoc[ i,  1 ]), "textLeft" )
+      oObj:writeString( nLinha,  2, hb_StrToUTF8(aDoc[ i,  2 ]), "textLeft" )
+      oObj:writeString( nLinha,  3, hb_StrToUTF8(DToC( aDoc[ i, 3 ] )), "textLeft" )
+      oObj:writeString( nLinha,  4, hb_StrToUTF8(DToC( aDoc[ i, 4 ] )), "textLeft" )
+      oObj:writeString( nLinha,  5, hb_StrToUTF8(aDoc[ i,  5 ]), "textLeft" )
+      oObj:writeString( nLinha,  6, hb_StrToUTF8(aDoc[ i,  6 ]), "textLeft" )
+      oObj:writeString( nLinha,  7, hb_StrToUTF8(aDoc[ i,  7 ]), "textLeft" )
+      oObj:writeString( nLinha,  8, hb_StrToUTF8(aDoc[ i,  8 ]), "textLeft" )
+      oObj:writeNumber( nLinha,  9, aDoc[ i,  9 ], "numberRight" )
       oObj:writeNumber( nLinha, 10, aDoc[ i, 10 ], "numberRight" )
       oObj:writeNumber( nLinha, 11, aDoc[ i, 11 ], "numberRight" )
       oObj:writeNumber( nLinha, 12, aDoc[ i, 12 ], "numberRight" )
