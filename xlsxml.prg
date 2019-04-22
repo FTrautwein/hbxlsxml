@@ -354,7 +354,6 @@ FUNCTION ExcelWriterXML_StrToHtmlSpecial( xtxt )
 
    LOCAL afrm, i, xret := "", xpos
 
-   xtxt := ChangeCodePage( xtxt )
    afrm := { ;
       { "&", "&amp;"  }, ;
       { '"', "&quot;" }, ;
@@ -371,8 +370,3 @@ FUNCTION ExcelWriterXML_StrToHtmlSpecial( xtxt )
    NEXT
 
    RETURN xret
-
-STATIC FUNCTION ChangeCodePage( xtxt )
-
-   RETURN IIF( !EMPTY(xtxt), Hb_StrToUTF8( xtxt ), xtxt )
-
