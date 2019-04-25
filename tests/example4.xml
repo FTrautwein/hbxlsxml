@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?mso-application progid="Excel.Sheet"?>
+<Workbook
+xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:x="urn:schemas-microsoft-com:office:excel"
+xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+xmlns:html="http://www.w3.org/TR/REC-html40">
+<DocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
+   <Created>20190425T15:22:08Z</Created>
+   <Version>11.9999</Version>
+</DocumentProperties>
+<ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel" />
+<Styles>
+   <Style ss:ID="DEFAULT" >
+      <Alignment ss:Vertical="Bottom"/>
+      <NumberFormat/>
+      <Protection/>
+   </Style>
+   <Style ss:ID="textLeft" >
+      <Alignment ss:Vertical="Center" ss:Horizontal="Left"/>
+      <Font ss:Size="10" ss:Color="Automatic"/>
+      <NumberFormat/>
+      <Protection/>
+   </Style>
+   <Style ss:ID="textLeftSmall" >
+      <Alignment ss:Vertical="Center" ss:Horizontal="Left"/>
+      <Font ss:Size="5" ss:Color="Automatic"/>
+      <NumberFormat/>
+      <Protection/>
+   </Style>
+   <Style ss:ID="textLeftRed" >
+      <Alignment ss:Vertical="Center" ss:Horizontal="Left"   ss:WrapText="1"/>
+      <Font ss:Size="10" ss:Color="Automatic" ss:Bold="1"/>
+      <Interior ss:Color="#FF0000" ss:Pattern="Solid"/>
+      <NumberFormat/>
+      <Protection/>
+   </Style>
+   <Style ss:ID="numberRight" >
+      <Alignment ss:Vertical="Center" ss:Horizontal="Right"/>
+      <Font ss:Size="10" ss:Color="Automatic" ss:Bold="1"/>
+      <NumberFormat ss:Format="#,##0.00;[Red]-#,##0.00;;@"/>
+      <Protection/>
+   </Style>
+   <Style ss:ID="borderAll" >
+      <Alignment ss:Vertical="Center" ss:Horizontal="Center"/>
+      <Borders>
+<Border ss:Position="Top" ss:LineStyle="Continuous" ss:Color="#0000FF" ss:Weight="1"/>
+<Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Color="#0000FF" ss:Weight="1"/>
+<Border ss:Position="Left" ss:LineStyle="Continuous" ss:Color="#0000FF" ss:Weight="1"/>
+<Border ss:Position="Right" ss:LineStyle="Continuous" ss:Color="#0000FF" ss:Weight="1"/>
+</Borders>
+      <NumberFormat/>
+      <Protection/>
+   </Style>
+   <Style ss:ID="borderBottom" >
+      <Alignment ss:Vertical="Center" ss:Horizontal="Center"/>
+      <Borders>
+<Border ss:Position="Bottom" ss:LineStyle="Dash" ss:Color="#008000" ss:Weight="2"/>
+</Borders>
+      <NumberFormat/>
+      <Protection/>
+   </Style>
+</Styles>
+<Worksheet ss:Name="Plan1" >
+   <Table>
+      <Column ss:Index="1" ss:AutoFitWidth="0" ss:Width="100"/>
+      <Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="400"/>
+      <Column ss:Index="3" ss:AutoFitWidth="0" ss:Width="70"/>
+      <Row ss:Index="1"  >
+         <Cell ss:StyleID="textLeft" ss:Index="1">
+            <Data ss:Type="String">Format</Data>
+         </Cell>
+         <Cell ss:StyleID="textLeft" ss:Index="2">
+            <Data ss:Type="String">Text</Data>
+         </Cell>
+      </Row>
+      <Row ss:Index="2"  >
+         <Cell ss:StyleID="textLeft" ss:Index="1">
+            <Data ss:Type="String">textLeft</Data>
+         </Cell>
+         <Cell ss:StyleID="textLeft" ss:Index="2">
+            <Data ss:Type="String">Horizontal Left, Vertical Center, FontSize 10</Data>
+         </Cell>
+      </Row>
+      <Row ss:Index="3"  >
+         <Cell ss:StyleID="textLeftSmall" ss:Index="1">
+            <Data ss:Type="String">textLeftSmall</Data>
+         </Cell>
+         <Cell ss:StyleID="textLeftSmall" ss:Index="2">
+            <Data ss:Type="String">Horizontal Left, Vertical Center, FontSize 5</Data>
+         </Cell>
+      </Row>
+      <Row ss:Index="4"  >
+         <Cell ss:StyleID="textLeftRed" ss:Index="1">
+            <Data ss:Type="String">textLeftRed</Data>
+         </Cell>
+         <Cell ss:StyleID="textLeftRed" ss:Index="2">
+            <Data ss:Type="String">Horizontal Left, Vertical Center, FontSize 10, Color Red</Data>
+         </Cell>
+      </Row>
+      <Row ss:Index="5"  >
+         <Cell ss:StyleID="numberRight" ss:Index="1">
+            <Data ss:Type="String">numberRight</Data>
+         </Cell>
+         <Cell ss:StyleID="numberRight" ss:Index="2">
+            <Data ss:Type="Number">1500.900000</Data>
+         </Cell>
+      </Row>
+      <Row ss:Index="6"  >
+         <Cell ss:StyleID="numberRight" ss:Index="1">
+            <Data ss:Type="String">numberRight</Data>
+         </Cell>
+         <Cell ss:StyleID="numberRight" ss:Index="2">
+            <Data ss:Type="Number">-1500.900000</Data>
+         </Cell>
+      </Row>
+      <Row ss:Index="7"  >
+         <Cell ss:StyleID="borderAll" ss:Index="1">
+            <Data ss:Type="String">borderAll</Data>
+         </Cell>
+         <Cell ss:StyleID="borderAll" ss:Index="2">
+            <Data ss:Type="String">BORDER ALL, CONTINUOUS</Data>
+         </Cell>
+      </Row>
+      <Row ss:Index="8"  >
+         <Cell ss:StyleID="borderBottom" ss:Index="1">
+            <Data ss:Type="String">borderBottom</Data>
+         </Cell>
+         <Cell ss:StyleID="borderBottom" ss:Index="2">
+            <Data ss:Type="String">BORDER BOTTOM, DASH</Data>
+         </Cell>
+      </Row>
+   </Table>
+</Worksheet>
+</Workbook>
