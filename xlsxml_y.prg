@@ -235,8 +235,8 @@ METHOD ExcelWriterXML_Style:getStyleXML()
          "DiagonalRight" => ::borderDR      }
       auxdata := NIL
       FOR EACH auxdata IN positions
-         position := auxdata:Key
-         pData    := auxdata:Value
+         position := auxdata:__enumKey()
+         pData    := auxdata:__enumValue()
          IF Empty( pData )
             LOOP
          ENDIF
