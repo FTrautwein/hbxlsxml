@@ -50,18 +50,15 @@
 
 #require "hbxlsxml"
 
+#define pCANCELADA  "CANCELADA"
+#define pAUTORIZADA "AUTORIZADA"
+
 PROCEDURE Main()
 
    LOCAL oXml, oSheet, xarquivo := "example.xml"
-   LOCAL i, xqtddoc, xttotnot, xtbascal, xtvlricm, xtbasipi, xtvlripi, aDoc, nLinha
-   LOCAL xEmpresa
-   LOCAL xDataImp
-   LOCAL xTitulo
-   LOCAL xPeriodo
-   LOCAL xOrdem
-   LOCAL oObj
-   LOCAL aNames
-
+   LOCAL xqtddoc, xttotnot, aDoc, nLinha, aNF
+   LOCAL xEmpresa, xDataImp, xTitulo, xPeriodo, cStatusStyle
+   
    REQUEST HB_CODEPAGE_PTISO
 
    Set( _SET_CODEPAGE, "PTISO" )
@@ -72,22 +69,85 @@ PROCEDURE Main()
    oXml := ExcelWriterXML():New( xarquivo )
    oXml:setOverwriteFile( .T. )
 
+   SetStyle( oXml )
+
+   oSheet := oXml:addSheet( "Plan1" )
+
+   oSheet:columnWidth(  1,  70 ) // N.Fiscal
+   oSheet:columnWidth(  2,  70 ) // Data Emis.
+   oSheet:columnWidth(  3,  80 ) // Situação
+   oSheet:columnWidth(  4, 300 ) // Nome Cliente/Fornecedor
+   oSheet:columnWidth(  5,  20 ) // UF
+   oSheet:columnWidth(  6,  80 ) // Vlr.Tot.
+
+   xEmpresa := "EMPRESA DEMONSTRAÇÃO LTDA"
+   xDataImp := DTOC(DATE())
+   xTitulo := "RELATÓRIO PARA DEMONSTRAR XML EXCEL"
+   xPeriodo := "Período: "+DTOC(DATE()-49-40) + " a " + DTOC(DATE()-49-1)
+   nLinha := 0
+
+   oSheet:writeString( ++nLinha, 1, hb_StrToUTF8(xEmpresa) , "Cabec" )
+   oSheet:cellMerge(     nLinha, 1, 4, 0 )
+   oSheet:writeString( ++nLinha, 1, hb_StrToUTF8(xTitulo)  , "Cabec" )
+   oSheet:cellMerge(     nLinha, 1, 4, 0 )
+   oSheet:writeString( ++nLinha, 1, hb_StrToUTF8(xPeriodo) , "Cabec" )
+   oSheet:cellMerge(     nLinha, 1, 4, 0 )
+   oSheet:writeString( ++nLinha, 1,  hb_StrToUTF8("Data: " + xDataImp), "Cabec" )
+   oSheet:cellMerge(     nLinha, 1, 4, 0 )
+
+   oSheet:writeString( ++nLinha, 1, hb_StrToUTF8("N.Fiscal"          ), "textLeftBoldCor" )
+   oSheet:writeString(   nLinha, 2, hb_StrToUTF8("Data Emissão"      ), "textLeftBoldCor" )
+   oSheet:writeString(   nLinha, 3, hb_StrToUTF8("Situação"          ), "textLeftBoldCor" )
+   oSheet:writeString(   nLinha, 4, hb_StrToUTF8("Cliente/Fornecedor"), "textLeftBoldCor" )
+   oSheet:writeString(   nLinha, 5, hb_StrToUTF8("UF"                ), "textLeftBoldCor" )
+   oSheet:writeString(   nLinha, 6, hb_StrToUTF8("Vlr.Tot."          ), "textRightBoldCor" )
+
+   aDoc:= GetDocs()
+   xqtddoc:= xttotnot:= 0
+
+   FOR EACH aNF IN aDOC
+      cStatusStyle:= IIF( aNF[ "situacao" ] == pCANCELADA, "Red", "" )
+      nLinha++
+      oSheet:writeString( nLinha, 1, hb_StrToUTF8( aNF[ "numeronf" ] ), "textLeft"+cStatusStyle )
+      oSheet:writeString( nLinha, 2, hb_StrToUTF8( DTOC(aNF[ "dtemissao"]) ), "textLeft"+cStatusStyle )
+      oSheet:writeString( nLinha, 3, hb_StrToUTF8( aNF[ "situacao" ] ), "textLeft"+cStatusStyle )
+      oSheet:writeString( nLinha, 4, hb_StrToUTF8( aNF[ "nomecliente" ] ), "textLeft"+cStatusStyle )
+      oSheet:writeString( nLinha, 5, hb_StrToUTF8( aNF[ "uf" ] ), "textLeft"+cStatusStyle )
+      oSheet:writeNumber( nLinha, 6, aNF[ "valortotal" ], "numberRight"+cStatusStyle )
+      xqtddoc++
+      xttotnot += aNF[ "valortotal" ]
+   NEXT
+
+   oSheet:writeString( ++nLinha, 1, "", "textLeftBold" )
+   oSheet:writeString(   nLinha, 2, "", "textLeftBold" )
+   oSheet:writeString(   nLinha, 3, "", "textLeftBold" )
+   oSheet:writeString(   nLinha, 4, "TOTAL ==> " + hb_ntos( xqtddoc ) + " documentos", "textLeftBold" )
+   oSheet:writeString(   nLinha, 5, "", "textLeftBold" )
+   oSheet:writeFormula( "Number", nLinha, 6, "=SUM(R[-40]C:R[-1]C)", "numberRightBold" )
+
+   oXml:writeData( xarquivo )
+
+   RETURN
+
+ STATIC FUNCTION SetStyle( oXml )  
+   LOCAL oObj
    oObj := oXml:addStyle( "textLeft" )
    oObj:alignHorizontal( "Left" )
    oObj:alignVertical( "Center" )
    oObj:setFontSize( 10 )
 
-   oObj := oXml:addStyle( "textLeftWrap" )
+   oObj := oXml:addStyle( "textLeftRed" )
    oObj:alignHorizontal( "Left" )
    oObj:alignVertical( "Center" )
-   oObj:alignWraptext()
    oObj:setFontSize( 10 )
+   oObj:bgColor( "red" )
 
    oObj := oXml:addStyle( "textLeftBold" )
    oObj:alignHorizontal( "Left" )
    oObj:alignVertical( "Center" )
    oObj:setFontSize( 10 )
    oObj:setFontBold()
+   oObj:border( "Top", 2, "black", "Solid" )
 
    oObj := oXml:addStyle( "textLeftBoldCor" )
    oObj:alignHorizontal( "Left" )
@@ -96,17 +156,6 @@ PROCEDURE Main()
    oObj:setFontBold()
    oObj:bgColor( "lightblue" )
    oObj:alignWraptext()
-
-   oObj := oXml:addStyle( "textRight" )
-   oObj:alignHorizontal( "Right" )
-   oObj:alignVertical( "Center" )
-   oObj:setFontSize( 10 )
-
-   oObj := oXml:addStyle( "textRightBold" )
-   oObj:alignHorizontal( "Right" )
-   oObj:alignVertical( "Center" )
-   oObj:setFontSize( 10 )
-   oObj:setFontBold()
 
    oObj := oXml:addStyle( "textRightBoldCor" )
    oObj:alignHorizontal( "Right" )
@@ -122,27 +171,20 @@ PROCEDURE Main()
    oObj:setNumberFormat( "#,##0.00" )
    oObj:setFontSize( 10 )
 
+   oObj := oXml:addStyle( "numberRightRed" )
+   oObj:alignHorizontal( "Right" )
+   oObj:alignVertical( "Center" )
+   oObj:setNumberFormat( "#,##0.00" )
+   oObj:setFontSize( 10 )
+   oObj:bgColor( "red" )
+
    oObj := oXml:addStyle( "numberRightBold" )
    oObj:alignHorizontal( "Right" )
    oObj:alignVertical( "Center" )
    oObj:setNumberFormat( "#,##0.00" )
    oObj:setFontSize( 10 )
    oObj:setFontBold()
-
-   oObj := oXml:addStyle( "numberRightBoldCor" )
-   oObj:alignHorizontal( "Right" )
-   oObj:alignVertical( "Center" )
-   oObj:setNumberFormat( "#,##0.00" )
-   oObj:setFontSize( 10 )
-   oObj:setFontBold()
-   oObj:bgColor( "lightblue" )
-
-   oObj := oXml:addStyle( "numberRightZero" )
-   oObj:alignHorizontal( "Right" )
-   oObj:alignVertical( "Center" )
-   oObj:setNumberFormat( "#,##0.00;[Red]-#,##0.00;;@" ) //"#,###.00")
-   oObj:setFontSize( 10 )
-   oObj:setFontBold()
+   oObj:border( "Top", 2, "black", "Solid" )
 
    oObj := oXml:addStyle( "Cabec" )
    oObj:alignHorizontal( "Left" )
@@ -156,59 +198,24 @@ PROCEDURE Main()
    oObj:setFontSize( 12 )
    oObj:setFontBold()
 
-   oSheet := oXml:addSheet( "Plan1" )
+   RETURN Nil
 
-   oObj := oSheet
-   oObj:columnWidth(  1,  70 ) // N.Fiscal
-   oObj:columnWidth(  2,  20 ) // TM
-   oObj:columnWidth(  3,  70 ) // Data Movto
-   oObj:columnWidth(  4,  70 ) // Data Emis.
-   oObj:columnWidth(  5,  50 ) // CFOP
-   oObj:columnWidth(  6,  50 ) // Cod. Cliente/Fornecedor
-   oObj:columnWidth(  7, 300 ) // Nome Cliente/Fornecedor
-   oObj:columnWidth(  8,  20 ) // UF
-   oObj:columnWidth(  9,  80 ) // Vlr.Tot.
-   oObj:columnWidth( 10,  80 ) // Base Calc.
-   oObj:columnWidth( 11,  80 ) // Vlr ICMS
-   oObj:columnWidth( 12,  80 ) // Base IPI
-   oObj:columnWidth( 13,  80 ) // Valor IPI
+STATIC FUNCTION GetDocs()
+   LOCAL aNames, aDoc:= { => }, i
+   aNames:= GetNames()
+   FOR i:= 1 TO 40
+      aDoc[i]:= {;
+         "numeronf"    => StrZero( i, 8 ),; 
+         "dtemissao"   => Date() - 49 - i, ;
+         "situacao"    => IIF( ((i-1) % 10) == 0, pCANCELADA, pAUTORIZADA ), ;
+         "nomecliente" => aNames[i], ;
+         "uf"          => "PR", ;
+         "valortotal"  => i * 100 } 
+   NEXT
+   RETURN aDoc
 
-   xEmpresa := "EMPRESA DEMONSTRAÇÃO LTDA"
-   xDataImp := DTOC(DATE())
-   xTitulo := "RELATÓRIO PARA DEMONSTRAR XML EXCEL"
-   xPeriodo := DTOC(DATE()-49-40) + " a " + DTOC(DATE()-49-1)
-   xOrdem  := "DATA DE EMISSÃO"
-
-   nLinha := 0
-
-   oObj:writeString( ++nLinha, 1, hb_StrToUTF8(xEmpresa) , "Cabec" )
-   oObj:cellMerge(     nLinha, 1, 5, 0 )
-   oObj:writeString(   nLinha, 12, hb_StrToUTF8("Data:" + xDataImp) , "CabecRight" )
-   oObj:cellMerge(     nLinha, 12, 1, 0 )
-   oObj:writeString( ++nLinha, 1, hb_StrToUTF8(xTitulo)  , "Cabec" )
-   oObj:cellMerge(     nLinha, 1, 5, 0 )
-   oObj:writeString( ++nLinha, 1, hb_StrToUTF8(xPeriodo) , "Cabec" )
-   oObj:cellMerge(     nLinha, 1, 5, 0 )
-   oObj:writeString( ++nLinha, 1, hb_StrToUTF8(xOrdem)   , "Cabec" )
-   oObj:cellMerge(     nLinha, 1, 5, 0 )
-
-   oObj := oSheet
-   oObj:writeString( ++nLinha,  1, hb_StrToUTF8("N.Fiscal"          ), "textLeftBoldCor" )
-   oObj:writeString(   nLinha,  2, hb_StrToUTF8("TM"                ), "textLeftBoldCor" )
-   oObj:writeString(   nLinha,  3, hb_StrToUTF8("Data Movto"        ), "textLeftBoldCor" )
-   oObj:writeString(   nLinha,  4, hb_StrToUTF8("Data Emissão"      ), "textLeftBoldCor" )
-   oObj:writeString(   nLinha,  5, hb_StrToUTF8("CFOP"              ), "textLeftBoldCor" )
-   oObj:writeString(   nLinha,  6, hb_StrToUTF8("Código"            ), "textLeftBoldCor" )
-   oObj:writeString(   nLinha,  7, hb_StrToUTF8("Cliente/Fornecedor"), "textLeftBoldCor" )
-   oObj:writeString(   nLinha,  8, hb_StrToUTF8("UF"                ), "textLeftBoldCor" )
-   oObj:writeString(   nLinha,  9, hb_StrToUTF8("Vlr.Tot."          ), "textRightBoldCor" )
-   oObj:writeString(   nLinha, 10, hb_StrToUTF8("Base Cálc."        ), "textRightBoldCor" )
-   oObj:writeString(   nLinha, 11, hb_StrToUTF8("Vlr ICMS"          ), "textRightBoldCor" )
-   oObj:writeString(   nLinha, 12, hb_StrToUTF8("Base IPI"          ), "textRightBoldCor" )
-   oObj:writeString(   nLinha, 13, hb_StrToUTF8("Valor IPI"         ), "textRightBoldCor" )
-
-   // CODEPAGE TEST
-   aNames:= {;
+STATIC FUNCTION GetNames()
+   RETURN {;
      "SUPERMERCADO NAÇÕES LTDA                ",;
      "SINAI FRIOS COMÉRCIO DE ALIMENTOS LTDA -",; 
      "SUPERMERCADO SANTO ANTONIO M.GUAÇU LT   ",; 
@@ -249,70 +256,3 @@ PROCEDURE Main()
      "SUPERMERCADO IRMÃOS TEIXEIRA LTDA - EPP ",; 
      "COMERCIAL ZARAGOZA IMPORTAÇÃO E EXPORTAÇ",; 
      "SUPERMERCADO CUCA DE ITANHAÉM LTDA      " } 
-
-   aDoc := {}
-   FOR i := 1 TO 40
-      AAdd( aDoc, ;
-         { StrZero( i, 8 ), ;
-         "VE", ;
-         Date() - 49 - i, ;
-         Date() - 50 - i, ;
-         "5.102", ;
-         StrZero( i, 5 ), ;
-         aNames[i], ;
-         "PR", ;
-         i * 100, ;
-         i * 100 * 0.90, ;
-         i * 100 * 0.90 * 0.12, ;
-         i * 100, ;
-         i * 100 * 0.10 } )
-   NEXT
-
-   xqtddoc := xttotnot := xtbascal := xtvlricm := xtbasipi := xtvlripi := 0
-
-   FOR i := 1 TO 40
-      nLinha++
-      oObj := oSheet
-      oObj:writeString( nLinha,  1, hb_StrToUTF8(aDoc[ i,  1 ]), "textLeft" )
-      oObj:writeString( nLinha,  2, hb_StrToUTF8(aDoc[ i,  2 ]), "textLeft" )
-      oObj:writeString( nLinha,  3, hb_StrToUTF8(DToC( aDoc[ i, 3 ] )), "textLeft" )
-      oObj:writeString( nLinha,  4, hb_StrToUTF8(DToC( aDoc[ i, 4 ] )), "textLeft" )
-      oObj:writeString( nLinha,  5, hb_StrToUTF8(aDoc[ i,  5 ]), "textLeft" )
-      oObj:writeString( nLinha,  6, hb_StrToUTF8(aDoc[ i,  6 ]), "textLeft" )
-      oObj:writeString( nLinha,  7, hb_StrToUTF8(aDoc[ i,  7 ]), "textLeft" )
-      oObj:writeString( nLinha,  8, hb_StrToUTF8(aDoc[ i,  8 ]), "textLeft" )
-      oObj:writeNumber( nLinha,  9, aDoc[ i,  9 ], "numberRight" )
-      oObj:writeNumber( nLinha, 10, aDoc[ i, 10 ], "numberRight" )
-      oObj:writeNumber( nLinha, 11, aDoc[ i, 11 ], "numberRight" )
-      oObj:writeNumber( nLinha, 12, aDoc[ i, 12 ], "numberRight" )
-      oObj:writeNumber( nLinha, 13, aDoc[ i, 13 ], "numberRight" )
-
-      xqtddoc++
-      xttotnot += aDoc[ i, 9 ]
-      xtbascal += aDoc[ i, 10 ]
-      xtvlricm += aDoc[ i, 11 ]
-      xtbasipi += aDoc[ i, 12 ]
-      xtvlripi += aDoc[ i, 13 ]
-   NEXT
-
-   oObj := oSheet
-   oObj:writeString( ++nLinha,  1, "", "textLeft" )
-   oObj:writeString(   nLinha,  2, "", "textLeft" )
-   oObj:writeString(   nLinha,  3, "", "textLeft" )
-   oObj:writeString(   nLinha,  4, "", "textLeft" )
-   oObj:writeString(   nLinha,  5, "", "textLeft" )
-   oObj:writeString(   nLinha,  6, "", "textLeft" )
-   oObj:writeString(   nLinha,  7, "TOTAL ==> " + hb_ntos( xqtddoc ) + " document(s)", "textLeftBold" )
-   oObj:writeString(   nLinha,  8, "", "textLeft" )
-   oObj:writeFormula( "Number", nLinha, 9, "=SUM(R[-40]C:R[-1]C)", "numberRightBold" )
-#if 0
-   oObj:writeNumber(   nLinha,  9, xttotnot, "numberRightBold" )
-#endif
-   oObj:writeNumber(   nLinha, 10, xtbascal, "numberRightBold" )
-   oObj:writeNumber(   nLinha, 11, xtvlricm, "numberRightBold" )
-   oObj:writeNumber(   nLinha, 12, xtbasipi, "numberRightBold" )
-   oObj:writeNumber(   nLinha, 13, xtvlripi, "numberRightBold" )
-
-   oXml:writeData( xarquivo )
-
-   RETURN
