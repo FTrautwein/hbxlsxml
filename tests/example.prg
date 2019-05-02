@@ -57,7 +57,8 @@ PROCEDURE Main()
 
    LOCAL oXml, oSheet, xarquivo := "example.xml"
    LOCAL xqtddoc, xttotnot, aDoc, nLinha, aNF
-   LOCAL xEmpresa, xDataImp, xTitulo, xPeriodo, cStatusStyle
+   LOCAL xEmpresa, xDataImp, xTitulo, xPeriodo, cStatusStyle, nIniSubtotal, aLinhaSubTotal
+   LOCAL cFormulaTotal, nLinSub
    
    REQUEST HB_CODEPAGE_PTISO
 
@@ -104,6 +105,8 @@ PROCEDURE Main()
 
    aDoc:= GetDocs()
    xqtddoc:= xttotnot:= 0
+   nIniSubtotal:= nLinha
+   aLinhaSubTotal:= {}
 
    FOR EACH aNF IN aDOC
       cStatusStyle:= IIF( aNF[ "situacao" ] == pCANCELADA, "Red", "" )
@@ -116,6 +119,13 @@ PROCEDURE Main()
       oSheet:writeNumber( nLinha, 6, aNF[ "valortotal" ], "numberRight"+cStatusStyle )
       xqtddoc++
       xttotnot += aNF[ "valortotal" ]
+      // subtotal
+      IF ( aNF:__enumIndex() % 10 ) == 0
+         oSheet:writeString( ++nLinha, 4, hb_StrToUTF8( "SubTotal" ), "textLeftBold" )
+         oSheet:writeFormula( "Number", nLinha, 6, "=SUM(R["+HB_NTOS(nIniSubtotal - nLinha + 1)+"]C:R[-1]C)", "numberRightBold" )
+         nIniSubtotal:= nLinha
+         AADD( aLinhaSubTotal, nLinha )
+      ENDIF
    NEXT
 
    oSheet:writeString( ++nLinha, 1, "", "textLeftBold" )
@@ -123,7 +133,17 @@ PROCEDURE Main()
    oSheet:writeString(   nLinha, 3, "", "textLeftBold" )
    oSheet:writeString(   nLinha, 4, "TOTAL ==> " + hb_ntos( xqtddoc ) + " documentos", "textLeftBold" )
    oSheet:writeString(   nLinha, 5, "", "textLeftBold" )
-   oSheet:writeFormula( "Number", nLinha, 6, "=SUM(R[-40]C:R[-1]C)", "numberRightBold" )
+
+   cFormulaTotal:= "=" // "=R[-1]C+R[-12]C+R[-23]C+R[-34]C"
+   FOR EACH nLinSub IN aLinhaSubTotal
+      IF nLinSub:__enumIndex > 1
+         cFormulaTotal+= "+"
+      ENDIF
+      cFormulaTotal+= "R["+HB_NTOS(nLinSub - nLinha)+"]C"      
+   NEXT
+   oSheet:writeFormula( "Number", nLinha, 6, cFormulaTotal, "numberRightBold" )
+   //oSheet:writeFormula( "Number", nLinha, 6, "=R[-1]C+R[-12]C+R[-23]C+R[-34]C", "numberRightBold" )
+   //oSheet:writeFormula( "Number", nLinha, 6, "=SUM(R[-40]C:R[-1]C)", "numberRightBold" )
 
    oXml:writeData( xarquivo )
 
@@ -168,20 +188,20 @@ PROCEDURE Main()
    oObj := oXml:addStyle( "numberRight" )
    oObj:alignHorizontal( "Right" )
    oObj:alignVertical( "Center" )
-   oObj:setNumberFormat( "#,##0.00" )
+   oObj:setNumberFormat( "#.##0,00;[RED]-#.##0,00;-" )
    oObj:setFontSize( 10 )
 
    oObj := oXml:addStyle( "numberRightRed" )
    oObj:alignHorizontal( "Right" )
    oObj:alignVertical( "Center" )
-   oObj:setNumberFormat( "#,##0.00" )
+   oObj:setNumberFormat( "#.##0,00;[RED]-#.##0,00;-" )
    oObj:setFontSize( 10 )
    oObj:bgColor( "red" )
 
    oObj := oXml:addStyle( "numberRightBold" )
    oObj:alignHorizontal( "Right" )
    oObj:alignVertical( "Center" )
-   oObj:setNumberFormat( "#,##0.00" )
+   oObj:setNumberFormat( "#.##0,00;[RED]-#.##0,00;-" )
    oObj:setFontSize( 10 )
    oObj:setFontBold()
    oObj:border( "Top", 2, "black", "Solid" )
@@ -209,8 +229,15 @@ STATIC FUNCTION GetDocs()
          "dtemissao"   => Date() - 49 - i, ;
          "situacao"    => IIF( ((i-1) % 10) == 0, pCANCELADA, pAUTORIZADA ), ;
          "nomecliente" => aNames[i], ;
-         "uf"          => "PR", ;
-         "valortotal"  => i * 100 } 
+         "uf"          => "PR" ;
+          } 
+      IF i % 9 == 0
+         aDoc[i]["valortotal"]:= i * 100 * -1
+      ELSEIF i % 8 == 0
+         aDoc[i]["valortotal"]:= 0
+      ELSE
+         aDoc[i]["valortotal"]:= i * 100
+      ENDIF
    NEXT
    RETURN aDoc
 

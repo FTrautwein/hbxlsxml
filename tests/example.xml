@@ -7,7 +7,7 @@ xmlns:x="urn:schemas-microsoft-com:office:excel"
 xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
 xmlns:html="http://www.w3.org/TR/REC-html40">
 <DocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
-   <Created>20190425T15:26:26Z</Created>
+   <Created>20190502T09:09:31Z</Created>
    <Version>11.9999</Version>
 </DocumentProperties>
 <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel" />
@@ -23,14 +23,18 @@ xmlns:html="http://www.w3.org/TR/REC-html40">
       <NumberFormat/>
       <Protection/>
    </Style>
-   <Style ss:ID="textLeftWrap" >
-      <Alignment ss:Vertical="Center" ss:Horizontal="Left"   ss:WrapText="1"/>
+   <Style ss:ID="textLeftRed" >
+      <Alignment ss:Vertical="Center" ss:Horizontal="Left"/>
       <Font ss:Size="10" ss:Color="Automatic"/>
+      <Interior ss:Color="#FF0000" ss:Pattern="Solid"/>
       <NumberFormat/>
       <Protection/>
    </Style>
    <Style ss:ID="textLeftBold" >
       <Alignment ss:Vertical="Center" ss:Horizontal="Left"/>
+      <Borders>
+<Border ss:Position="Top" ss:LineStyle="Continuous" ss:Color="#000000" ss:Weight="2"/>
+</Borders>
       <Font ss:Size="10" ss:Color="Automatic" ss:Bold="1"/>
       <NumberFormat/>
       <Protection/>
@@ -39,18 +43,6 @@ xmlns:html="http://www.w3.org/TR/REC-html40">
       <Alignment ss:Vertical="Center" ss:Horizontal="Left"   ss:WrapText="1"/>
       <Font ss:Size="10" ss:Color="Automatic" ss:Bold="1"/>
       <Interior ss:Color="#ADD8E6" ss:Pattern="Solid"/>
-      <NumberFormat/>
-      <Protection/>
-   </Style>
-   <Style ss:ID="textRight" >
-      <Alignment ss:Vertical="Center" ss:Horizontal="Right"/>
-      <Font ss:Size="10" ss:Color="Automatic"/>
-      <NumberFormat/>
-      <Protection/>
-   </Style>
-   <Style ss:ID="textRightBold" >
-      <Alignment ss:Vertical="Center" ss:Horizontal="Right"/>
-      <Font ss:Size="10" ss:Color="Automatic" ss:Bold="1"/>
       <NumberFormat/>
       <Protection/>
    </Style>
@@ -64,26 +56,23 @@ xmlns:html="http://www.w3.org/TR/REC-html40">
    <Style ss:ID="numberRight" >
       <Alignment ss:Vertical="Center" ss:Horizontal="Right"/>
       <Font ss:Size="10" ss:Color="Automatic"/>
-      <NumberFormat ss:Format="#,##0.00"/>
+      <NumberFormat ss:Format="#.##0,00;[RED]-#.##0,00;-"/>
+      <Protection/>
+   </Style>
+   <Style ss:ID="numberRightRed" >
+      <Alignment ss:Vertical="Center" ss:Horizontal="Right"/>
+      <Font ss:Size="10" ss:Color="Automatic"/>
+      <Interior ss:Color="#FF0000" ss:Pattern="Solid"/>
+      <NumberFormat ss:Format="#.##0,00;[RED]-#.##0,00;-"/>
       <Protection/>
    </Style>
    <Style ss:ID="numberRightBold" >
       <Alignment ss:Vertical="Center" ss:Horizontal="Right"/>
+      <Borders>
+<Border ss:Position="Top" ss:LineStyle="Continuous" ss:Color="#000000" ss:Weight="2"/>
+</Borders>
       <Font ss:Size="10" ss:Color="Automatic" ss:Bold="1"/>
-      <NumberFormat ss:Format="#,##0.00"/>
-      <Protection/>
-   </Style>
-   <Style ss:ID="numberRightBoldCor" >
-      <Alignment ss:Vertical="Center" ss:Horizontal="Right"/>
-      <Font ss:Size="10" ss:Color="Automatic" ss:Bold="1"/>
-      <Interior ss:Color="#ADD8E6" ss:Pattern="Solid"/>
-      <NumberFormat ss:Format="#,##0.00"/>
-      <Protection/>
-   </Style>
-   <Style ss:ID="numberRightZero" >
-      <Alignment ss:Vertical="Center" ss:Horizontal="Right"/>
-      <Font ss:Size="10" ss:Color="Automatic" ss:Bold="1"/>
-      <NumberFormat ss:Format="#,##0.00;[Red]-#,##0.00;;@"/>
+      <NumberFormat ss:Format="#.##0,00;[RED]-#.##0,00;-"/>
       <Protection/>
    </Style>
    <Style ss:ID="Cabec" >
@@ -102,39 +91,29 @@ xmlns:html="http://www.w3.org/TR/REC-html40">
 <Worksheet ss:Name="Plan1" >
    <Table>
       <Column ss:Index="1" ss:AutoFitWidth="0" ss:Width="70"/>
-      <Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="20"/>
-      <Column ss:Index="3" ss:AutoFitWidth="0" ss:Width="70"/>
-      <Column ss:Index="4" ss:AutoFitWidth="0" ss:Width="70"/>
-      <Column ss:Index="5" ss:AutoFitWidth="0" ss:Width="50"/>
-      <Column ss:Index="6" ss:AutoFitWidth="0" ss:Width="50"/>
-      <Column ss:Index="7" ss:AutoFitWidth="0" ss:Width="300"/>
-      <Column ss:Index="8" ss:AutoFitWidth="0" ss:Width="20"/>
-      <Column ss:Index="9" ss:AutoFitWidth="0" ss:Width="80"/>
-      <Column ss:Index="10" ss:AutoFitWidth="0" ss:Width="80"/>
-      <Column ss:Index="11" ss:AutoFitWidth="0" ss:Width="80"/>
-      <Column ss:Index="12" ss:AutoFitWidth="0" ss:Width="80"/>
-      <Column ss:Index="13" ss:AutoFitWidth="0" ss:Width="80"/>
+      <Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="70"/>
+      <Column ss:Index="3" ss:AutoFitWidth="0" ss:Width="80"/>
+      <Column ss:Index="4" ss:AutoFitWidth="0" ss:Width="300"/>
+      <Column ss:Index="5" ss:AutoFitWidth="0" ss:Width="20"/>
+      <Column ss:Index="6" ss:AutoFitWidth="0" ss:Width="80"/>
       <Row ss:Index="1"  >
-         <Cell ss:StyleID="Cabec" ss:Index="1"  ss:MergeAcross="5" ss:MergeDown="0">
+         <Cell ss:StyleID="Cabec" ss:Index="1"  ss:MergeAcross="4" ss:MergeDown="0">
             <Data ss:Type="String">EMPRESA DEMONSTRAÇÃO LTDA</Data>
-         </Cell>
-         <Cell ss:StyleID="CabecRight" ss:Index="12"  ss:MergeAcross="1" ss:MergeDown="0">
-            <Data ss:Type="String">Data:2019-04-25</Data>
          </Cell>
       </Row>
       <Row ss:Index="2"  >
-         <Cell ss:StyleID="Cabec" ss:Index="1"  ss:MergeAcross="5" ss:MergeDown="0">
+         <Cell ss:StyleID="Cabec" ss:Index="1"  ss:MergeAcross="4" ss:MergeDown="0">
             <Data ss:Type="String">RELATÓRIO PARA DEMONSTRAR XML EXCEL</Data>
          </Cell>
       </Row>
       <Row ss:Index="3"  >
-         <Cell ss:StyleID="Cabec" ss:Index="1"  ss:MergeAcross="5" ss:MergeDown="0">
-            <Data ss:Type="String">2019-01-26 a 2019-03-06</Data>
+         <Cell ss:StyleID="Cabec" ss:Index="1"  ss:MergeAcross="4" ss:MergeDown="0">
+            <Data ss:Type="String">Período: 2019-02-02 a 2019-03-13</Data>
          </Cell>
       </Row>
       <Row ss:Index="4"  >
-         <Cell ss:StyleID="Cabec" ss:Index="1"  ss:MergeAcross="5" ss:MergeDown="0">
-            <Data ss:Type="String">DATA DE EMISSÃO</Data>
+         <Cell ss:StyleID="Cabec" ss:Index="1"  ss:MergeAcross="4" ss:MergeDown="0">
+            <Data ss:Type="String">Data: 2019-05-02</Data>
          </Cell>
       </Row>
       <Row ss:Index="5"  >
@@ -142,81 +121,39 @@ xmlns:html="http://www.w3.org/TR/REC-html40">
             <Data ss:Type="String">N.Fiscal</Data>
          </Cell>
          <Cell ss:StyleID="textLeftBoldCor" ss:Index="2">
-            <Data ss:Type="String">TM</Data>
-         </Cell>
-         <Cell ss:StyleID="textLeftBoldCor" ss:Index="3">
-            <Data ss:Type="String">Data Movto</Data>
-         </Cell>
-         <Cell ss:StyleID="textLeftBoldCor" ss:Index="4">
             <Data ss:Type="String">Data Emissão</Data>
          </Cell>
-         <Cell ss:StyleID="textLeftBoldCor" ss:Index="5">
-            <Data ss:Type="String">CFOP</Data>
+         <Cell ss:StyleID="textLeftBoldCor" ss:Index="3">
+            <Data ss:Type="String">Situação</Data>
          </Cell>
-         <Cell ss:StyleID="textLeftBoldCor" ss:Index="6">
-            <Data ss:Type="String">Código</Data>
-         </Cell>
-         <Cell ss:StyleID="textLeftBoldCor" ss:Index="7">
+         <Cell ss:StyleID="textLeftBoldCor" ss:Index="4">
             <Data ss:Type="String">Cliente/Fornecedor</Data>
          </Cell>
-         <Cell ss:StyleID="textLeftBoldCor" ss:Index="8">
+         <Cell ss:StyleID="textLeftBoldCor" ss:Index="5">
             <Data ss:Type="String">UF</Data>
          </Cell>
-         <Cell ss:StyleID="textRightBoldCor" ss:Index="9">
+         <Cell ss:StyleID="textRightBoldCor" ss:Index="6">
             <Data ss:Type="String">Vlr.Tot.</Data>
-         </Cell>
-         <Cell ss:StyleID="textRightBoldCor" ss:Index="10">
-            <Data ss:Type="String">Base Cálc.</Data>
-         </Cell>
-         <Cell ss:StyleID="textRightBoldCor" ss:Index="11">
-            <Data ss:Type="String">Vlr ICMS</Data>
-         </Cell>
-         <Cell ss:StyleID="textRightBoldCor" ss:Index="12">
-            <Data ss:Type="String">Base IPI</Data>
-         </Cell>
-         <Cell ss:StyleID="textRightBoldCor" ss:Index="13">
-            <Data ss:Type="String">Valor IPI</Data>
          </Cell>
       </Row>
       <Row ss:Index="6"  >
-         <Cell ss:StyleID="textLeft" ss:Index="1">
+         <Cell ss:StyleID="textLeftRed" ss:Index="1">
             <Data ss:Type="String">00000001</Data>
          </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="2">
-            <Data ss:Type="String">VE</Data>
+         <Cell ss:StyleID="textLeftRed" ss:Index="2">
+            <Data ss:Type="String">2019-03-13</Data>
          </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="3">
-            <Data ss:Type="String">2019-03-06</Data>
+         <Cell ss:StyleID="textLeftRed" ss:Index="3">
+            <Data ss:Type="String">CANCELADA</Data>
          </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="4">
-            <Data ss:Type="String">2019-03-05</Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="5">
-            <Data ss:Type="String">5.102</Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="6">
-            <Data ss:Type="String">00001</Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="7">
+         <Cell ss:StyleID="textLeftRed" ss:Index="4">
             <Data ss:Type="String">SUPERMERCADO NAÇÕES LTDA                </Data>
          </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="8">
+         <Cell ss:StyleID="textLeftRed" ss:Index="5">
             <Data ss:Type="String">PR</Data>
          </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="9">
+         <Cell ss:StyleID="numberRightRed" ss:Index="6">
             <Data ss:Type="Number">100.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="10">
-            <Data ss:Type="Number">90.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="11">
-            <Data ss:Type="Number">10.800000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="12">
-            <Data ss:Type="Number">100.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="13">
-            <Data ss:Type="Number">10.000000</Data>
          </Cell>
       </Row>
       <Row ss:Index="7"  >
@@ -224,40 +161,19 @@ xmlns:html="http://www.w3.org/TR/REC-html40">
             <Data ss:Type="String">00000002</Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="2">
-            <Data ss:Type="String">VE</Data>
+            <Data ss:Type="String">2019-03-12</Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="3">
-            <Data ss:Type="String">2019-03-05</Data>
+            <Data ss:Type="String">AUTORIZADA</Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="4">
-            <Data ss:Type="String">2019-03-04</Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="5">
-            <Data ss:Type="String">5.102</Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="6">
-            <Data ss:Type="String">00002</Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="7">
             <Data ss:Type="String">SINAI FRIOS COMÉRCIO DE ALIMENTOS LTDA -</Data>
          </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="8">
+         <Cell ss:StyleID="textLeft" ss:Index="5">
             <Data ss:Type="String">PR</Data>
          </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="9">
+         <Cell ss:StyleID="numberRight" ss:Index="6">
             <Data ss:Type="Number">200.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="10">
-            <Data ss:Type="Number">180.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="11">
-            <Data ss:Type="Number">21.600000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="12">
-            <Data ss:Type="Number">200.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="13">
-            <Data ss:Type="Number">20.000000</Data>
          </Cell>
       </Row>
       <Row ss:Index="8"  >
@@ -265,40 +181,19 @@ xmlns:html="http://www.w3.org/TR/REC-html40">
             <Data ss:Type="String">00000003</Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="2">
-            <Data ss:Type="String">VE</Data>
+            <Data ss:Type="String">2019-03-11</Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="3">
-            <Data ss:Type="String">2019-03-04</Data>
+            <Data ss:Type="String">AUTORIZADA</Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="4">
-            <Data ss:Type="String">2019-03-03</Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="5">
-            <Data ss:Type="String">5.102</Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="6">
-            <Data ss:Type="String">00003</Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="7">
             <Data ss:Type="String">SUPERMERCADO SANTO ANTONIO M.GUAÇU LT   </Data>
          </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="8">
+         <Cell ss:StyleID="textLeft" ss:Index="5">
             <Data ss:Type="String">PR</Data>
          </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="9">
+         <Cell ss:StyleID="numberRight" ss:Index="6">
             <Data ss:Type="Number">300.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="10">
-            <Data ss:Type="Number">270.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="11">
-            <Data ss:Type="Number">32.400000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="12">
-            <Data ss:Type="Number">300.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="13">
-            <Data ss:Type="Number">30.000000</Data>
          </Cell>
       </Row>
       <Row ss:Index="9"  >
@@ -306,40 +201,19 @@ xmlns:html="http://www.w3.org/TR/REC-html40">
             <Data ss:Type="String">00000004</Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="2">
-            <Data ss:Type="String">VE</Data>
+            <Data ss:Type="String">2019-03-10</Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="3">
-            <Data ss:Type="String">2019-03-03</Data>
+            <Data ss:Type="String">AUTORIZADA</Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="4">
-            <Data ss:Type="String">2019-03-02</Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="5">
-            <Data ss:Type="String">5.102</Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="6">
-            <Data ss:Type="String">00004</Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="7">
             <Data ss:Type="String">NOVA MENDONÇA - SUPERMERCADO LTDA       </Data>
          </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="8">
+         <Cell ss:StyleID="textLeft" ss:Index="5">
             <Data ss:Type="String">PR</Data>
          </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="9">
+         <Cell ss:StyleID="numberRight" ss:Index="6">
             <Data ss:Type="Number">400.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="10">
-            <Data ss:Type="Number">360.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="11">
-            <Data ss:Type="Number">43.200000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="12">
-            <Data ss:Type="Number">400.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="13">
-            <Data ss:Type="Number">40.000000</Data>
          </Cell>
       </Row>
       <Row ss:Index="10"  >
@@ -347,40 +221,19 @@ xmlns:html="http://www.w3.org/TR/REC-html40">
             <Data ss:Type="String">00000005</Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="2">
-            <Data ss:Type="String">VE</Data>
+            <Data ss:Type="String">2019-03-09</Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="3">
-            <Data ss:Type="String">2019-03-02</Data>
+            <Data ss:Type="String">AUTORIZADA</Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="4">
-            <Data ss:Type="String">2019-03-01</Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="5">
-            <Data ss:Type="String">5.102</Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="6">
-            <Data ss:Type="String">00005</Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="7">
             <Data ss:Type="String">MARANHÃO SUPERMERCADOS S/A              </Data>
          </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="8">
+         <Cell ss:StyleID="textLeft" ss:Index="5">
             <Data ss:Type="String">PR</Data>
          </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="9">
+         <Cell ss:StyleID="numberRight" ss:Index="6">
             <Data ss:Type="Number">500.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="10">
-            <Data ss:Type="Number">450.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="11">
-            <Data ss:Type="Number">54.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="12">
-            <Data ss:Type="Number">500.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="13">
-            <Data ss:Type="Number">50.000000</Data>
          </Cell>
       </Row>
       <Row ss:Index="11"  >
@@ -388,40 +241,19 @@ xmlns:html="http://www.w3.org/TR/REC-html40">
             <Data ss:Type="String">00000006</Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="2">
-            <Data ss:Type="String">VE</Data>
+            <Data ss:Type="String">2019-03-08</Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="3">
-            <Data ss:Type="String">2019-03-01</Data>
+            <Data ss:Type="String">AUTORIZADA</Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="4">
-            <Data ss:Type="String">2019-02-28</Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="5">
-            <Data ss:Type="String">5.102</Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="6">
-            <Data ss:Type="String">00006</Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="7">
             <Data ss:Type="String">MARTINS COMÉRCIO DE PRODUTOS ALIMENTÍCIO</Data>
          </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="8">
+         <Cell ss:StyleID="textLeft" ss:Index="5">
             <Data ss:Type="String">PR</Data>
          </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="9">
+         <Cell ss:StyleID="numberRight" ss:Index="6">
             <Data ss:Type="Number">600.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="10">
-            <Data ss:Type="Number">540.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="11">
-            <Data ss:Type="Number">64.800000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="12">
-            <Data ss:Type="Number">600.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="13">
-            <Data ss:Type="Number">60.000000</Data>
          </Cell>
       </Row>
       <Row ss:Index="12"  >
@@ -429,40 +261,19 @@ xmlns:html="http://www.w3.org/TR/REC-html40">
             <Data ss:Type="String">00000007</Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="2">
-            <Data ss:Type="String">VE</Data>
+            <Data ss:Type="String">2019-03-07</Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="3">
-            <Data ss:Type="String">2019-02-28</Data>
+            <Data ss:Type="String">AUTORIZADA</Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="4">
-            <Data ss:Type="String">2019-02-27</Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="5">
-            <Data ss:Type="String">5.102</Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="6">
-            <Data ss:Type="String">00007</Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="7">
             <Data ss:Type="String">SUPERMERCADO ESTRELA DE REGENTE FEIJÓ   </Data>
          </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="8">
+         <Cell ss:StyleID="textLeft" ss:Index="5">
             <Data ss:Type="String">PR</Data>
          </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="9">
+         <Cell ss:StyleID="numberRight" ss:Index="6">
             <Data ss:Type="Number">700.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="10">
-            <Data ss:Type="Number">630.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="11">
-            <Data ss:Type="Number">75.600000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="12">
-            <Data ss:Type="Number">700.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="13">
-            <Data ss:Type="Number">70.000000</Data>
          </Cell>
       </Row>
       <Row ss:Index="13"  >
@@ -470,40 +281,19 @@ xmlns:html="http://www.w3.org/TR/REC-html40">
             <Data ss:Type="String">00000008</Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="2">
-            <Data ss:Type="String">VE</Data>
+            <Data ss:Type="String">2019-03-06</Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="3">
-            <Data ss:Type="String">2019-02-27</Data>
+            <Data ss:Type="String">AUTORIZADA</Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="4">
-            <Data ss:Type="String">2019-02-26</Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="5">
-            <Data ss:Type="String">5.102</Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="6">
-            <Data ss:Type="String">00008</Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="7">
             <Data ss:Type="String">SUPERMERCADO CASA ALIANÇA LTDA          </Data>
          </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="8">
+         <Cell ss:StyleID="textLeft" ss:Index="5">
             <Data ss:Type="String">PR</Data>
          </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="9">
-            <Data ss:Type="Number">800.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="10">
-            <Data ss:Type="Number">720.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="11">
-            <Data ss:Type="Number">86.400000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="12">
-            <Data ss:Type="Number">800.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="13">
-            <Data ss:Type="Number">80.000000</Data>
+         <Cell ss:StyleID="numberRight" ss:Index="6">
+            <Data ss:Type="Number">0.000000</Data>
          </Cell>
       </Row>
       <Row ss:Index="14"  >
@@ -511,40 +301,19 @@ xmlns:html="http://www.w3.org/TR/REC-html40">
             <Data ss:Type="String">00000009</Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="2">
-            <Data ss:Type="String">VE</Data>
+            <Data ss:Type="String">2019-03-05</Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="3">
-            <Data ss:Type="String">2019-02-26</Data>
+            <Data ss:Type="String">AUTORIZADA</Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="4">
-            <Data ss:Type="String">2019-02-25</Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="5">
-            <Data ss:Type="String">5.102</Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="6">
-            <Data ss:Type="String">00009</Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="7">
             <Data ss:Type="String">POEMA COMÉRCIO GÊNERO S ALIMENTÍCIOS    </Data>
          </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="8">
+         <Cell ss:StyleID="textLeft" ss:Index="5">
             <Data ss:Type="String">PR</Data>
          </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="9">
-            <Data ss:Type="Number">900.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="10">
-            <Data ss:Type="Number">810.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="11">
-            <Data ss:Type="Number">97.200000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="12">
-            <Data ss:Type="Number">900.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="13">
-            <Data ss:Type="Number">90.000000</Data>
+         <Cell ss:StyleID="numberRight" ss:Index="6">
+            <Data ss:Type="Number">-900.000000</Data>
          </Cell>
       </Row>
       <Row ss:Index="15"  >
@@ -552,1311 +321,671 @@ xmlns:html="http://www.w3.org/TR/REC-html40">
             <Data ss:Type="String">00000010</Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="2">
-            <Data ss:Type="String">VE</Data>
+            <Data ss:Type="String">2019-03-04</Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="3">
-            <Data ss:Type="String">2019-02-25</Data>
+            <Data ss:Type="String">AUTORIZADA</Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="4">
-            <Data ss:Type="String">2019-02-24</Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="5">
-            <Data ss:Type="String">5.102</Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="6">
-            <Data ss:Type="String">00010</Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="7">
             <Data ss:Type="String">COMERCIAL KEYPAR REPRESENTAÇÕES E SUPERM</Data>
          </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="8">
+         <Cell ss:StyleID="textLeft" ss:Index="5">
             <Data ss:Type="String">PR</Data>
          </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="9">
+         <Cell ss:StyleID="numberRight" ss:Index="6">
             <Data ss:Type="Number">1000.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="10">
-            <Data ss:Type="Number">900.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="11">
-            <Data ss:Type="Number">108.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="12">
-            <Data ss:Type="Number">1000.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="13">
-            <Data ss:Type="Number">100.000000</Data>
          </Cell>
       </Row>
       <Row ss:Index="16"  >
-         <Cell ss:StyleID="textLeft" ss:Index="1">
-            <Data ss:Type="String">00000011</Data>
+         <Cell ss:StyleID="textLeftBold" ss:Index="4">
+            <Data ss:Type="String">SubTotal</Data>
          </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="2">
-            <Data ss:Type="String">VE</Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="3">
-            <Data ss:Type="String">2019-02-24</Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="4">
-            <Data ss:Type="String">2019-02-23</Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="5">
-            <Data ss:Type="String">5.102</Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="6">
-            <Data ss:Type="String">00011</Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="7">
-            <Data ss:Type="String">SUPERMERCADO ALTA ROTAÇÃO LTDA          </Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="8">
-            <Data ss:Type="String">PR</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="9">
-            <Data ss:Type="Number">1100.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="10">
-            <Data ss:Type="Number">990.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="11">
-            <Data ss:Type="Number">118.800000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="12">
-            <Data ss:Type="Number">1100.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="13">
-            <Data ss:Type="Number">110.000000</Data>
+         <Cell ss:StyleID="numberRightBold" ss:Index="6"   ss:Formula="=SUM(R[-10]C:R[-1]C)">
+            <Data ss:Type="String"></Data>
          </Cell>
       </Row>
       <Row ss:Index="17"  >
-         <Cell ss:StyleID="textLeft" ss:Index="1">
-            <Data ss:Type="String">00000012</Data>
+         <Cell ss:StyleID="textLeftRed" ss:Index="1">
+            <Data ss:Type="String">00000011</Data>
          </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="2">
-            <Data ss:Type="String">VE</Data>
+         <Cell ss:StyleID="textLeftRed" ss:Index="2">
+            <Data ss:Type="String">2019-03-03</Data>
          </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="3">
-            <Data ss:Type="String">2019-02-23</Data>
+         <Cell ss:StyleID="textLeftRed" ss:Index="3">
+            <Data ss:Type="String">CANCELADA</Data>
          </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="4">
-            <Data ss:Type="String">2019-02-22</Data>
+         <Cell ss:StyleID="textLeftRed" ss:Index="4">
+            <Data ss:Type="String">SUPERMERCADO ALTA ROTAÇÃO LTDA          </Data>
          </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="5">
-            <Data ss:Type="String">5.102</Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="6">
-            <Data ss:Type="String">00012</Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="7">
-            <Data ss:Type="String">SUPERMERCADO SHIBATA TAUBATÉ LTDA       </Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="8">
+         <Cell ss:StyleID="textLeftRed" ss:Index="5">
             <Data ss:Type="String">PR</Data>
          </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="9">
-            <Data ss:Type="Number">1200.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="10">
-            <Data ss:Type="Number">1080.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="11">
-            <Data ss:Type="Number">129.600000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="12">
-            <Data ss:Type="Number">1200.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="13">
-            <Data ss:Type="Number">120.000000</Data>
+         <Cell ss:StyleID="numberRightRed" ss:Index="6">
+            <Data ss:Type="Number">1100.000000</Data>
          </Cell>
       </Row>
       <Row ss:Index="18"  >
          <Cell ss:StyleID="textLeft" ss:Index="1">
-            <Data ss:Type="String">00000013</Data>
+            <Data ss:Type="String">00000012</Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="2">
-            <Data ss:Type="String">VE</Data>
+            <Data ss:Type="String">2019-03-02</Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="3">
-            <Data ss:Type="String">2019-02-22</Data>
+            <Data ss:Type="String">AUTORIZADA</Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="4">
-            <Data ss:Type="String">2019-02-21</Data>
+            <Data ss:Type="String">SUPERMERCADO SHIBATA TAUBATÉ LTDA       </Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="5">
-            <Data ss:Type="String">5.102</Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="6">
-            <Data ss:Type="String">00013</Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="7">
-            <Data ss:Type="String">OPÇÃO SUPERMERCADO DE S.B.C. LTDA - EPP </Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="8">
             <Data ss:Type="String">PR</Data>
          </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="9">
-            <Data ss:Type="Number">1300.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="10">
-            <Data ss:Type="Number">1170.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="11">
-            <Data ss:Type="Number">140.400000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="12">
-            <Data ss:Type="Number">1300.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="13">
-            <Data ss:Type="Number">130.000000</Data>
+         <Cell ss:StyleID="numberRight" ss:Index="6">
+            <Data ss:Type="Number">1200.000000</Data>
          </Cell>
       </Row>
       <Row ss:Index="19"  >
          <Cell ss:StyleID="textLeft" ss:Index="1">
-            <Data ss:Type="String">00000014</Data>
+            <Data ss:Type="String">00000013</Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="2">
-            <Data ss:Type="String">VE</Data>
+            <Data ss:Type="String">2019-03-01</Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="3">
-            <Data ss:Type="String">2019-02-21</Data>
+            <Data ss:Type="String">AUTORIZADA</Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="4">
-            <Data ss:Type="String">2019-02-20</Data>
+            <Data ss:Type="String">OPÇÃO SUPERMERCADO DE S.B.C. LTDA - EPP </Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="5">
-            <Data ss:Type="String">5.102</Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="6">
-            <Data ss:Type="String">00014</Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="7">
-            <Data ss:Type="String">CASA AVENIDA COMÉRCIO E IMPORTACAO LTDA </Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="8">
             <Data ss:Type="String">PR</Data>
          </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="9">
-            <Data ss:Type="Number">1400.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="10">
-            <Data ss:Type="Number">1260.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="11">
-            <Data ss:Type="Number">151.200000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="12">
-            <Data ss:Type="Number">1400.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="13">
-            <Data ss:Type="Number">140.000000</Data>
+         <Cell ss:StyleID="numberRight" ss:Index="6">
+            <Data ss:Type="Number">1300.000000</Data>
          </Cell>
       </Row>
       <Row ss:Index="20"  >
          <Cell ss:StyleID="textLeft" ss:Index="1">
-            <Data ss:Type="String">00000015</Data>
+            <Data ss:Type="String">00000014</Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="2">
-            <Data ss:Type="String">VE</Data>
+            <Data ss:Type="String">2019-02-28</Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="3">
-            <Data ss:Type="String">2019-02-20</Data>
+            <Data ss:Type="String">AUTORIZADA</Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="4">
-            <Data ss:Type="String">2019-02-19</Data>
+            <Data ss:Type="String">CASA AVENIDA COMÉRCIO E IMPORTACAO LTDA </Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="5">
-            <Data ss:Type="String">5.102</Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="6">
-            <Data ss:Type="String">00015</Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="7">
-            <Data ss:Type="String">BEIRA RIO COMÉRCIO EXPORTAÇÃO E IMPORTAÇ</Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="8">
             <Data ss:Type="String">PR</Data>
          </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="9">
-            <Data ss:Type="Number">1500.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="10">
-            <Data ss:Type="Number">1350.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="11">
-            <Data ss:Type="Number">162.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="12">
-            <Data ss:Type="Number">1500.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="13">
-            <Data ss:Type="Number">150.000000</Data>
+         <Cell ss:StyleID="numberRight" ss:Index="6">
+            <Data ss:Type="Number">1400.000000</Data>
          </Cell>
       </Row>
       <Row ss:Index="21"  >
          <Cell ss:StyleID="textLeft" ss:Index="1">
-            <Data ss:Type="String">00000016</Data>
+            <Data ss:Type="String">00000015</Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="2">
-            <Data ss:Type="String">VE</Data>
+            <Data ss:Type="String">2019-02-27</Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="3">
-            <Data ss:Type="String">2019-02-19</Data>
+            <Data ss:Type="String">AUTORIZADA</Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="4">
-            <Data ss:Type="String">2019-02-18</Data>
+            <Data ss:Type="String">BEIRA RIO COMÉRCIO EXPORTAÇÃO E IMPORTAÇ</Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="5">
-            <Data ss:Type="String">5.102</Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="6">
-            <Data ss:Type="String">00016</Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="7">
-            <Data ss:Type="String">RODRIGUES &amp; PEREIRA CORDEIRÓPOLIS LTDA  </Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="8">
             <Data ss:Type="String">PR</Data>
          </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="9">
-            <Data ss:Type="Number">1600.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="10">
-            <Data ss:Type="Number">1440.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="11">
-            <Data ss:Type="Number">172.800000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="12">
-            <Data ss:Type="Number">1600.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="13">
-            <Data ss:Type="Number">160.000000</Data>
+         <Cell ss:StyleID="numberRight" ss:Index="6">
+            <Data ss:Type="Number">1500.000000</Data>
          </Cell>
       </Row>
       <Row ss:Index="22"  >
          <Cell ss:StyleID="textLeft" ss:Index="1">
-            <Data ss:Type="String">00000017</Data>
+            <Data ss:Type="String">00000016</Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="2">
-            <Data ss:Type="String">VE</Data>
+            <Data ss:Type="String">2019-02-26</Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="3">
-            <Data ss:Type="String">2019-02-18</Data>
+            <Data ss:Type="String">AUTORIZADA</Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="4">
-            <Data ss:Type="String">2019-02-17</Data>
+            <Data ss:Type="String">RODRIGUES &amp; PEREIRA CORDEIRÓPOLIS LTDA  </Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="5">
-            <Data ss:Type="String">5.102</Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="6">
-            <Data ss:Type="String">00017</Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="7">
-            <Data ss:Type="String">707 AUTO SERVIÇO DE ALIMENTOS           </Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="8">
             <Data ss:Type="String">PR</Data>
          </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="9">
-            <Data ss:Type="Number">1700.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="10">
-            <Data ss:Type="Number">1530.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="11">
-            <Data ss:Type="Number">183.600000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="12">
-            <Data ss:Type="Number">1700.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="13">
-            <Data ss:Type="Number">170.000000</Data>
+         <Cell ss:StyleID="numberRight" ss:Index="6">
+            <Data ss:Type="Number">0.000000</Data>
          </Cell>
       </Row>
       <Row ss:Index="23"  >
          <Cell ss:StyleID="textLeft" ss:Index="1">
-            <Data ss:Type="String">00000018</Data>
+            <Data ss:Type="String">00000017</Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="2">
-            <Data ss:Type="String">VE</Data>
+            <Data ss:Type="String">2019-02-25</Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="3">
-            <Data ss:Type="String">2019-02-17</Data>
+            <Data ss:Type="String">AUTORIZADA</Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="4">
-            <Data ss:Type="String">2019-02-16</Data>
+            <Data ss:Type="String">707 AUTO SERVIÇO DE ALIMENTOS           </Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="5">
-            <Data ss:Type="String">5.102</Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="6">
-            <Data ss:Type="String">00018</Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="7">
-            <Data ss:Type="String">IGOMIC COMÉRCIO DE ALIMENTOS LTDA       </Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="8">
             <Data ss:Type="String">PR</Data>
          </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="9">
-            <Data ss:Type="Number">1800.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="10">
-            <Data ss:Type="Number">1620.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="11">
-            <Data ss:Type="Number">194.400000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="12">
-            <Data ss:Type="Number">1800.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="13">
-            <Data ss:Type="Number">180.000000</Data>
+         <Cell ss:StyleID="numberRight" ss:Index="6">
+            <Data ss:Type="Number">1700.000000</Data>
          </Cell>
       </Row>
       <Row ss:Index="24"  >
          <Cell ss:StyleID="textLeft" ss:Index="1">
-            <Data ss:Type="String">00000019</Data>
+            <Data ss:Type="String">00000018</Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="2">
-            <Data ss:Type="String">VE</Data>
+            <Data ss:Type="String">2019-02-24</Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="3">
-            <Data ss:Type="String">2019-02-16</Data>
+            <Data ss:Type="String">AUTORIZADA</Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="4">
-            <Data ss:Type="String">2019-02-15</Data>
+            <Data ss:Type="String">IGOMIC COMÉRCIO DE ALIMENTOS LTDA       </Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="5">
-            <Data ss:Type="String">5.102</Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="6">
-            <Data ss:Type="String">00019</Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="7">
-            <Data ss:Type="String">EMPÓRIO BOM GOSTO                       </Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="8">
             <Data ss:Type="String">PR</Data>
          </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="9">
-            <Data ss:Type="Number">1900.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="10">
-            <Data ss:Type="Number">1710.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="11">
-            <Data ss:Type="Number">205.200000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="12">
-            <Data ss:Type="Number">1900.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="13">
-            <Data ss:Type="Number">190.000000</Data>
+         <Cell ss:StyleID="numberRight" ss:Index="6">
+            <Data ss:Type="Number">-1800.000000</Data>
          </Cell>
       </Row>
       <Row ss:Index="25"  >
          <Cell ss:StyleID="textLeft" ss:Index="1">
-            <Data ss:Type="String">00000020</Data>
+            <Data ss:Type="String">00000019</Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="2">
-            <Data ss:Type="String">VE</Data>
+            <Data ss:Type="String">2019-02-23</Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="3">
-            <Data ss:Type="String">2019-02-15</Data>
+            <Data ss:Type="String">AUTORIZADA</Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="4">
-            <Data ss:Type="String">2019-02-14</Data>
+            <Data ss:Type="String">EMPÓRIO BOM GOSTO                       </Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="5">
-            <Data ss:Type="String">5.102</Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="6">
-            <Data ss:Type="String">00020</Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="7">
-            <Data ss:Type="String">CONTINENTAL COMÉRCIO VAREJISTA LTDA.    </Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="8">
             <Data ss:Type="String">PR</Data>
          </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="9">
-            <Data ss:Type="Number">2000.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="10">
-            <Data ss:Type="Number">1800.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="11">
-            <Data ss:Type="Number">216.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="12">
-            <Data ss:Type="Number">2000.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="13">
-            <Data ss:Type="Number">200.000000</Data>
+         <Cell ss:StyleID="numberRight" ss:Index="6">
+            <Data ss:Type="Number">1900.000000</Data>
          </Cell>
       </Row>
       <Row ss:Index="26"  >
          <Cell ss:StyleID="textLeft" ss:Index="1">
-            <Data ss:Type="String">00000021</Data>
+            <Data ss:Type="String">00000020</Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="2">
-            <Data ss:Type="String">VE</Data>
+            <Data ss:Type="String">2019-02-22</Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="3">
-            <Data ss:Type="String">2019-02-14</Data>
+            <Data ss:Type="String">AUTORIZADA</Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="4">
-            <Data ss:Type="String">2019-02-13</Data>
+            <Data ss:Type="String">CONTINENTAL COMÉRCIO VAREJISTA LTDA.    </Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="5">
-            <Data ss:Type="String">5.102</Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="6">
-            <Data ss:Type="String">00021</Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="7">
-            <Data ss:Type="String">OPÇÃO SUPERMERCADO                      </Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="8">
             <Data ss:Type="String">PR</Data>
          </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="9">
-            <Data ss:Type="Number">2100.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="10">
-            <Data ss:Type="Number">1890.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="11">
-            <Data ss:Type="Number">226.800000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="12">
-            <Data ss:Type="Number">2100.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="13">
-            <Data ss:Type="Number">210.000000</Data>
+         <Cell ss:StyleID="numberRight" ss:Index="6">
+            <Data ss:Type="Number">2000.000000</Data>
          </Cell>
       </Row>
       <Row ss:Index="27"  >
-         <Cell ss:StyleID="textLeft" ss:Index="1">
-            <Data ss:Type="String">00000022</Data>
+         <Cell ss:StyleID="textLeftBold" ss:Index="4">
+            <Data ss:Type="String">SubTotal</Data>
          </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="2">
-            <Data ss:Type="String">VE</Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="3">
-            <Data ss:Type="String">2019-02-13</Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="4">
-            <Data ss:Type="String">2019-02-12</Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="5">
-            <Data ss:Type="String">5.102</Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="6">
-            <Data ss:Type="String">00022</Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="7">
-            <Data ss:Type="String">LUA AZUL - COMÉRCIO DE PRODUTOS ALIMENTÍ</Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="8">
-            <Data ss:Type="String">PR</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="9">
-            <Data ss:Type="Number">2200.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="10">
-            <Data ss:Type="Number">1980.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="11">
-            <Data ss:Type="Number">237.600000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="12">
-            <Data ss:Type="Number">2200.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="13">
-            <Data ss:Type="Number">220.000000</Data>
+         <Cell ss:StyleID="numberRightBold" ss:Index="6"   ss:Formula="=SUM(R[-10]C:R[-1]C)">
+            <Data ss:Type="String"></Data>
          </Cell>
       </Row>
       <Row ss:Index="28"  >
-         <Cell ss:StyleID="textLeft" ss:Index="1">
-            <Data ss:Type="String">00000023</Data>
+         <Cell ss:StyleID="textLeftRed" ss:Index="1">
+            <Data ss:Type="String">00000021</Data>
          </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="2">
-            <Data ss:Type="String">VE</Data>
+         <Cell ss:StyleID="textLeftRed" ss:Index="2">
+            <Data ss:Type="String">2019-02-21</Data>
          </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="3">
-            <Data ss:Type="String">2019-02-12</Data>
+         <Cell ss:StyleID="textLeftRed" ss:Index="3">
+            <Data ss:Type="String">CANCELADA</Data>
          </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="4">
-            <Data ss:Type="String">2019-02-11</Data>
+         <Cell ss:StyleID="textLeftRed" ss:Index="4">
+            <Data ss:Type="String">OPÇÃO SUPERMERCADO                      </Data>
          </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="5">
-            <Data ss:Type="String">5.102</Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="6">
-            <Data ss:Type="String">00023</Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="7">
-            <Data ss:Type="String">SUPERMERCADO PEG PAG DOIS IRMÃOS LTDA   </Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="8">
+         <Cell ss:StyleID="textLeftRed" ss:Index="5">
             <Data ss:Type="String">PR</Data>
          </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="9">
-            <Data ss:Type="Number">2300.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="10">
-            <Data ss:Type="Number">2070.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="11">
-            <Data ss:Type="Number">248.400000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="12">
-            <Data ss:Type="Number">2300.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="13">
-            <Data ss:Type="Number">230.000000</Data>
+         <Cell ss:StyleID="numberRightRed" ss:Index="6">
+            <Data ss:Type="Number">2100.000000</Data>
          </Cell>
       </Row>
       <Row ss:Index="29"  >
          <Cell ss:StyleID="textLeft" ss:Index="1">
-            <Data ss:Type="String">00000024</Data>
+            <Data ss:Type="String">00000022</Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="2">
-            <Data ss:Type="String">VE</Data>
+            <Data ss:Type="String">2019-02-20</Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="3">
-            <Data ss:Type="String">2019-02-11</Data>
+            <Data ss:Type="String">AUTORIZADA</Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="4">
-            <Data ss:Type="String">2019-02-10</Data>
+            <Data ss:Type="String">LUA AZUL - COMÉRCIO DE PRODUTOS ALIMENTÍ</Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="5">
-            <Data ss:Type="String">5.102</Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="6">
-            <Data ss:Type="String">00024</Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="7">
-            <Data ss:Type="String">COMÉRCIO DE ALIMENTOS ELION LTDA. - EPP </Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="8">
             <Data ss:Type="String">PR</Data>
          </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="9">
-            <Data ss:Type="Number">2400.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="10">
-            <Data ss:Type="Number">2160.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="11">
-            <Data ss:Type="Number">259.200000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="12">
-            <Data ss:Type="Number">2400.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="13">
-            <Data ss:Type="Number">240.000000</Data>
+         <Cell ss:StyleID="numberRight" ss:Index="6">
+            <Data ss:Type="Number">2200.000000</Data>
          </Cell>
       </Row>
       <Row ss:Index="30"  >
          <Cell ss:StyleID="textLeft" ss:Index="1">
-            <Data ss:Type="String">00000025</Data>
+            <Data ss:Type="String">00000023</Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="2">
-            <Data ss:Type="String">VE</Data>
+            <Data ss:Type="String">2019-02-19</Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="3">
-            <Data ss:Type="String">2019-02-10</Data>
+            <Data ss:Type="String">AUTORIZADA</Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="4">
-            <Data ss:Type="String">2019-02-09</Data>
+            <Data ss:Type="String">SUPERMERCADO PEG PAG DOIS IRMÃOS LTDA   </Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="5">
-            <Data ss:Type="String">5.102</Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="6">
-            <Data ss:Type="String">00025</Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="7">
-            <Data ss:Type="String">SUPERMERCADO CAÇULA LTDA                </Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="8">
             <Data ss:Type="String">PR</Data>
          </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="9">
-            <Data ss:Type="Number">2500.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="10">
-            <Data ss:Type="Number">2250.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="11">
-            <Data ss:Type="Number">270.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="12">
-            <Data ss:Type="Number">2500.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="13">
-            <Data ss:Type="Number">250.000000</Data>
+         <Cell ss:StyleID="numberRight" ss:Index="6">
+            <Data ss:Type="Number">2300.000000</Data>
          </Cell>
       </Row>
       <Row ss:Index="31"  >
          <Cell ss:StyleID="textLeft" ss:Index="1">
-            <Data ss:Type="String">00000026</Data>
+            <Data ss:Type="String">00000024</Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="2">
-            <Data ss:Type="String">VE</Data>
+            <Data ss:Type="String">2019-02-18</Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="3">
-            <Data ss:Type="String">2019-02-09</Data>
+            <Data ss:Type="String">AUTORIZADA</Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="4">
-            <Data ss:Type="String">2019-02-08</Data>
+            <Data ss:Type="String">COMÉRCIO DE ALIMENTOS ELION LTDA. - EPP </Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="5">
-            <Data ss:Type="String">5.102</Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="6">
-            <Data ss:Type="String">00026</Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="7">
-            <Data ss:Type="String">MERCADO  SÃO JOSÉ  DOMINGOS LTDA        </Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="8">
             <Data ss:Type="String">PR</Data>
          </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="9">
-            <Data ss:Type="Number">2600.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="10">
-            <Data ss:Type="Number">2340.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="11">
-            <Data ss:Type="Number">280.800000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="12">
-            <Data ss:Type="Number">2600.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="13">
-            <Data ss:Type="Number">260.000000</Data>
+         <Cell ss:StyleID="numberRight" ss:Index="6">
+            <Data ss:Type="Number">0.000000</Data>
          </Cell>
       </Row>
       <Row ss:Index="32"  >
          <Cell ss:StyleID="textLeft" ss:Index="1">
-            <Data ss:Type="String">00000027</Data>
+            <Data ss:Type="String">00000025</Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="2">
-            <Data ss:Type="String">VE</Data>
+            <Data ss:Type="String">2019-02-17</Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="3">
-            <Data ss:Type="String">2019-02-08</Data>
+            <Data ss:Type="String">AUTORIZADA</Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="4">
-            <Data ss:Type="String">2019-02-07</Data>
+            <Data ss:Type="String">SUPERMERCADO CAÇULA LTDA                </Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="5">
-            <Data ss:Type="String">5.102</Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="6">
-            <Data ss:Type="String">00027</Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="7">
-            <Data ss:Type="String">SUPERMERCADO SANTO ANTONIO M.GUAÇU LTDA-</Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="8">
             <Data ss:Type="String">PR</Data>
          </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="9">
-            <Data ss:Type="Number">2700.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="10">
-            <Data ss:Type="Number">2430.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="11">
-            <Data ss:Type="Number">291.600000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="12">
-            <Data ss:Type="Number">2700.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="13">
-            <Data ss:Type="Number">270.000000</Data>
+         <Cell ss:StyleID="numberRight" ss:Index="6">
+            <Data ss:Type="Number">2500.000000</Data>
          </Cell>
       </Row>
       <Row ss:Index="33"  >
          <Cell ss:StyleID="textLeft" ss:Index="1">
-            <Data ss:Type="String">00000028</Data>
+            <Data ss:Type="String">00000026</Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="2">
-            <Data ss:Type="String">VE</Data>
+            <Data ss:Type="String">2019-02-16</Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="3">
-            <Data ss:Type="String">2019-02-07</Data>
+            <Data ss:Type="String">AUTORIZADA</Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="4">
-            <Data ss:Type="String">2019-02-06</Data>
+            <Data ss:Type="String">MERCADO  SÃO JOSÉ  DOMINGOS LTDA        </Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="5">
-            <Data ss:Type="String">5.102</Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="6">
-            <Data ss:Type="String">00028</Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="7">
-            <Data ss:Type="String">DIPALMA COMERCIO DISTRIBUIÇÃO E LOGISTIC</Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="8">
             <Data ss:Type="String">PR</Data>
          </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="9">
-            <Data ss:Type="Number">2800.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="10">
-            <Data ss:Type="Number">2520.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="11">
-            <Data ss:Type="Number">302.400000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="12">
-            <Data ss:Type="Number">2800.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="13">
-            <Data ss:Type="Number">280.000000</Data>
+         <Cell ss:StyleID="numberRight" ss:Index="6">
+            <Data ss:Type="Number">2600.000000</Data>
          </Cell>
       </Row>
       <Row ss:Index="34"  >
          <Cell ss:StyleID="textLeft" ss:Index="1">
-            <Data ss:Type="String">00000029</Data>
+            <Data ss:Type="String">00000027</Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="2">
-            <Data ss:Type="String">VE</Data>
+            <Data ss:Type="String">2019-02-15</Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="3">
-            <Data ss:Type="String">2019-02-06</Data>
+            <Data ss:Type="String">AUTORIZADA</Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="4">
-            <Data ss:Type="String">2019-02-05</Data>
+            <Data ss:Type="String">SUPERMERCADO SANTO ANTONIO M.GUAÇU LTDA-</Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="5">
-            <Data ss:Type="String">5.102</Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="6">
-            <Data ss:Type="String">00029</Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="7">
-            <Data ss:Type="String">SUPERMERCADO SÃO JUDAS TADEU LTDA       </Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="8">
             <Data ss:Type="String">PR</Data>
          </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="9">
-            <Data ss:Type="Number">2900.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="10">
-            <Data ss:Type="Number">2610.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="11">
-            <Data ss:Type="Number">313.200000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="12">
-            <Data ss:Type="Number">2900.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="13">
-            <Data ss:Type="Number">290.000000</Data>
+         <Cell ss:StyleID="numberRight" ss:Index="6">
+            <Data ss:Type="Number">-2700.000000</Data>
          </Cell>
       </Row>
       <Row ss:Index="35"  >
          <Cell ss:StyleID="textLeft" ss:Index="1">
-            <Data ss:Type="String">00000030</Data>
+            <Data ss:Type="String">00000028</Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="2">
-            <Data ss:Type="String">VE</Data>
+            <Data ss:Type="String">2019-02-14</Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="3">
-            <Data ss:Type="String">2019-02-05</Data>
+            <Data ss:Type="String">AUTORIZADA</Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="4">
-            <Data ss:Type="String">2019-02-04</Data>
+            <Data ss:Type="String">DIPALMA COMERCIO DISTRIBUIÇÃO E LOGISTIC</Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="5">
-            <Data ss:Type="String">5.102</Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="6">
-            <Data ss:Type="String">00030</Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="7">
-            <Data ss:Type="String">RIBEIRO &amp; ALVES COMÉRCIO DE ALIMENTOS VO</Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="8">
             <Data ss:Type="String">PR</Data>
          </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="9">
-            <Data ss:Type="Number">3000.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="10">
-            <Data ss:Type="Number">2700.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="11">
-            <Data ss:Type="Number">324.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="12">
-            <Data ss:Type="Number">3000.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="13">
-            <Data ss:Type="Number">300.000000</Data>
+         <Cell ss:StyleID="numberRight" ss:Index="6">
+            <Data ss:Type="Number">2800.000000</Data>
          </Cell>
       </Row>
       <Row ss:Index="36"  >
          <Cell ss:StyleID="textLeft" ss:Index="1">
-            <Data ss:Type="String">00000031</Data>
+            <Data ss:Type="String">00000029</Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="2">
-            <Data ss:Type="String">VE</Data>
+            <Data ss:Type="String">2019-02-13</Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="3">
-            <Data ss:Type="String">2019-02-04</Data>
+            <Data ss:Type="String">AUTORIZADA</Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="4">
-            <Data ss:Type="String">2019-02-03</Data>
+            <Data ss:Type="String">SUPERMERCADO SÃO JUDAS TADEU LTDA       </Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="5">
-            <Data ss:Type="String">5.102</Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="6">
-            <Data ss:Type="String">00031</Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="7">
-            <Data ss:Type="String">SUPERMERCADO PEDROSÃO LTDA              </Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="8">
             <Data ss:Type="String">PR</Data>
          </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="9">
-            <Data ss:Type="Number">3100.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="10">
-            <Data ss:Type="Number">2790.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="11">
-            <Data ss:Type="Number">334.800000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="12">
-            <Data ss:Type="Number">3100.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="13">
-            <Data ss:Type="Number">310.000000</Data>
+         <Cell ss:StyleID="numberRight" ss:Index="6">
+            <Data ss:Type="Number">2900.000000</Data>
          </Cell>
       </Row>
       <Row ss:Index="37"  >
          <Cell ss:StyleID="textLeft" ss:Index="1">
-            <Data ss:Type="String">00000032</Data>
+            <Data ss:Type="String">00000030</Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="2">
-            <Data ss:Type="String">VE</Data>
+            <Data ss:Type="String">2019-02-12</Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="3">
-            <Data ss:Type="String">2019-02-03</Data>
+            <Data ss:Type="String">AUTORIZADA</Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="4">
-            <Data ss:Type="String">2019-02-02</Data>
+            <Data ss:Type="String">RIBEIRO &amp; ALVES COMÉRCIO DE ALIMENTOS VO</Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="5">
-            <Data ss:Type="String">5.102</Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="6">
-            <Data ss:Type="String">00032</Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="7">
-            <Data ss:Type="String">LUZITA INDÚSTRIA E COMÉRCIO LTDA        </Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="8">
             <Data ss:Type="String">PR</Data>
          </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="9">
-            <Data ss:Type="Number">3200.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="10">
-            <Data ss:Type="Number">2880.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="11">
-            <Data ss:Type="Number">345.600000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="12">
-            <Data ss:Type="Number">3200.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="13">
-            <Data ss:Type="Number">320.000000</Data>
+         <Cell ss:StyleID="numberRight" ss:Index="6">
+            <Data ss:Type="Number">3000.000000</Data>
          </Cell>
       </Row>
       <Row ss:Index="38"  >
-         <Cell ss:StyleID="textLeft" ss:Index="1">
-            <Data ss:Type="String">00000033</Data>
+         <Cell ss:StyleID="textLeftBold" ss:Index="4">
+            <Data ss:Type="String">SubTotal</Data>
          </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="2">
-            <Data ss:Type="String">VE</Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="3">
-            <Data ss:Type="String">2019-02-02</Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="4">
-            <Data ss:Type="String">2019-02-01</Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="5">
-            <Data ss:Type="String">5.102</Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="6">
-            <Data ss:Type="String">00033</Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="7">
-            <Data ss:Type="String">MERCANTIL NOVA CURUÇA LTDA              </Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="8">
-            <Data ss:Type="String">PR</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="9">
-            <Data ss:Type="Number">3300.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="10">
-            <Data ss:Type="Number">2970.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="11">
-            <Data ss:Type="Number">356.400000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="12">
-            <Data ss:Type="Number">3300.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="13">
-            <Data ss:Type="Number">330.000000</Data>
+         <Cell ss:StyleID="numberRightBold" ss:Index="6"   ss:Formula="=SUM(R[-10]C:R[-1]C)">
+            <Data ss:Type="String"></Data>
          </Cell>
       </Row>
       <Row ss:Index="39"  >
-         <Cell ss:StyleID="textLeft" ss:Index="1">
-            <Data ss:Type="String">00000034</Data>
+         <Cell ss:StyleID="textLeftRed" ss:Index="1">
+            <Data ss:Type="String">00000031</Data>
          </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="2">
-            <Data ss:Type="String">VE</Data>
+         <Cell ss:StyleID="textLeftRed" ss:Index="2">
+            <Data ss:Type="String">2019-02-11</Data>
          </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="3">
-            <Data ss:Type="String">2019-02-01</Data>
+         <Cell ss:StyleID="textLeftRed" ss:Index="3">
+            <Data ss:Type="String">CANCELADA</Data>
          </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="4">
-            <Data ss:Type="String">2019-01-31</Data>
+         <Cell ss:StyleID="textLeftRed" ss:Index="4">
+            <Data ss:Type="String">SUPERMERCADO PEDROSÃO LTDA              </Data>
          </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="5">
-            <Data ss:Type="String">5.102</Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="6">
-            <Data ss:Type="String">00034</Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="7">
-            <Data ss:Type="String">IRMÃOS MUFFATO &amp; CIA LTDA.              </Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="8">
+         <Cell ss:StyleID="textLeftRed" ss:Index="5">
             <Data ss:Type="String">PR</Data>
          </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="9">
-            <Data ss:Type="Number">3400.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="10">
-            <Data ss:Type="Number">3060.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="11">
-            <Data ss:Type="Number">367.200000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="12">
-            <Data ss:Type="Number">3400.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="13">
-            <Data ss:Type="Number">340.000000</Data>
+         <Cell ss:StyleID="numberRightRed" ss:Index="6">
+            <Data ss:Type="Number">3100.000000</Data>
          </Cell>
       </Row>
       <Row ss:Index="40"  >
          <Cell ss:StyleID="textLeft" ss:Index="1">
-            <Data ss:Type="String">00000035</Data>
+            <Data ss:Type="String">00000032</Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="2">
-            <Data ss:Type="String">VE</Data>
+            <Data ss:Type="String">2019-02-10</Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="3">
-            <Data ss:Type="String">2019-01-31</Data>
+            <Data ss:Type="String">AUTORIZADA</Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="4">
-            <Data ss:Type="String">2019-01-30</Data>
+            <Data ss:Type="String">LUZITA INDÚSTRIA E COMÉRCIO LTDA        </Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="5">
-            <Data ss:Type="String">5.102</Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="6">
-            <Data ss:Type="String">00035</Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="7">
-            <Data ss:Type="String">QUEIROZ - COMERCIO, ADMINISTRAÇÃO &amp; PLAN</Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="8">
             <Data ss:Type="String">PR</Data>
          </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="9">
-            <Data ss:Type="Number">3500.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="10">
-            <Data ss:Type="Number">3150.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="11">
-            <Data ss:Type="Number">378.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="12">
-            <Data ss:Type="Number">3500.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="13">
-            <Data ss:Type="Number">350.000000</Data>
+         <Cell ss:StyleID="numberRight" ss:Index="6">
+            <Data ss:Type="Number">0.000000</Data>
          </Cell>
       </Row>
       <Row ss:Index="41"  >
          <Cell ss:StyleID="textLeft" ss:Index="1">
-            <Data ss:Type="String">00000036</Data>
+            <Data ss:Type="String">00000033</Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="2">
-            <Data ss:Type="String">VE</Data>
+            <Data ss:Type="String">2019-02-09</Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="3">
-            <Data ss:Type="String">2019-01-30</Data>
+            <Data ss:Type="String">AUTORIZADA</Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="4">
-            <Data ss:Type="String">2019-01-29</Data>
+            <Data ss:Type="String">MERCANTIL NOVA CURUÇA LTDA              </Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="5">
-            <Data ss:Type="String">5.102</Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="6">
-            <Data ss:Type="String">00036</Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="7">
-            <Data ss:Type="String">JOSÉ CARLOS MINATEL &amp; CIA. LTDA. -EPP   </Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="8">
             <Data ss:Type="String">PR</Data>
          </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="9">
-            <Data ss:Type="Number">3600.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="10">
-            <Data ss:Type="Number">3240.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="11">
-            <Data ss:Type="Number">388.800000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="12">
-            <Data ss:Type="Number">3600.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="13">
-            <Data ss:Type="Number">360.000000</Data>
+         <Cell ss:StyleID="numberRight" ss:Index="6">
+            <Data ss:Type="Number">3300.000000</Data>
          </Cell>
       </Row>
       <Row ss:Index="42"  >
          <Cell ss:StyleID="textLeft" ss:Index="1">
-            <Data ss:Type="String">00000037</Data>
+            <Data ss:Type="String">00000034</Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="2">
-            <Data ss:Type="String">VE</Data>
+            <Data ss:Type="String">2019-02-08</Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="3">
-            <Data ss:Type="String">2019-01-29</Data>
+            <Data ss:Type="String">AUTORIZADA</Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="4">
-            <Data ss:Type="String">2019-01-28</Data>
+            <Data ss:Type="String">IRMÃOS MUFFATO &amp; CIA LTDA.              </Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="5">
-            <Data ss:Type="String">5.102</Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="6">
-            <Data ss:Type="String">00037</Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="7">
-            <Data ss:Type="String">SUPERMERCADOS UNIÃO SERV LTDA.          </Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="8">
             <Data ss:Type="String">PR</Data>
          </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="9">
-            <Data ss:Type="Number">3700.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="10">
-            <Data ss:Type="Number">3330.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="11">
-            <Data ss:Type="Number">399.600000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="12">
-            <Data ss:Type="Number">3700.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="13">
-            <Data ss:Type="Number">370.000000</Data>
+         <Cell ss:StyleID="numberRight" ss:Index="6">
+            <Data ss:Type="Number">3400.000000</Data>
          </Cell>
       </Row>
       <Row ss:Index="43"  >
          <Cell ss:StyleID="textLeft" ss:Index="1">
-            <Data ss:Type="String">00000038</Data>
+            <Data ss:Type="String">00000035</Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="2">
-            <Data ss:Type="String">VE</Data>
+            <Data ss:Type="String">2019-02-07</Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="3">
-            <Data ss:Type="String">2019-01-28</Data>
+            <Data ss:Type="String">AUTORIZADA</Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="4">
-            <Data ss:Type="String">2019-01-27</Data>
+            <Data ss:Type="String">QUEIROZ - COMERCIO, ADMINISTRAÇÃO &amp; PLAN</Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="5">
-            <Data ss:Type="String">5.102</Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="6">
-            <Data ss:Type="String">00038</Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="7">
-            <Data ss:Type="String">SUPERMERCADO IRMÃOS TEIXEIRA LTDA - EPP </Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="8">
             <Data ss:Type="String">PR</Data>
          </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="9">
-            <Data ss:Type="Number">3800.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="10">
-            <Data ss:Type="Number">3420.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="11">
-            <Data ss:Type="Number">410.400000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="12">
-            <Data ss:Type="Number">3800.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="13">
-            <Data ss:Type="Number">380.000000</Data>
+         <Cell ss:StyleID="numberRight" ss:Index="6">
+            <Data ss:Type="Number">3500.000000</Data>
          </Cell>
       </Row>
       <Row ss:Index="44"  >
          <Cell ss:StyleID="textLeft" ss:Index="1">
-            <Data ss:Type="String">00000039</Data>
+            <Data ss:Type="String">00000036</Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="2">
-            <Data ss:Type="String">VE</Data>
+            <Data ss:Type="String">2019-02-06</Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="3">
-            <Data ss:Type="String">2019-01-27</Data>
+            <Data ss:Type="String">AUTORIZADA</Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="4">
-            <Data ss:Type="String">2019-01-26</Data>
+            <Data ss:Type="String">JOSÉ CARLOS MINATEL &amp; CIA. LTDA. -EPP   </Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="5">
-            <Data ss:Type="String">5.102</Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="6">
-            <Data ss:Type="String">00039</Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="7">
-            <Data ss:Type="String">COMERCIAL ZARAGOZA IMPORTAÇÃO E EXPORTAÇ</Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="8">
             <Data ss:Type="String">PR</Data>
          </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="9">
-            <Data ss:Type="Number">3900.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="10">
-            <Data ss:Type="Number">3510.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="11">
-            <Data ss:Type="Number">421.200000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="12">
-            <Data ss:Type="Number">3900.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="13">
-            <Data ss:Type="Number">390.000000</Data>
+         <Cell ss:StyleID="numberRight" ss:Index="6">
+            <Data ss:Type="Number">-3600.000000</Data>
          </Cell>
       </Row>
       <Row ss:Index="45"  >
          <Cell ss:StyleID="textLeft" ss:Index="1">
-            <Data ss:Type="String">00000040</Data>
+            <Data ss:Type="String">00000037</Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="2">
-            <Data ss:Type="String">VE</Data>
+            <Data ss:Type="String">2019-02-05</Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="3">
-            <Data ss:Type="String">2019-01-26</Data>
+            <Data ss:Type="String">AUTORIZADA</Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="4">
-            <Data ss:Type="String">2019-01-25</Data>
+            <Data ss:Type="String">SUPERMERCADOS UNIÃO SERV LTDA.          </Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="5">
-            <Data ss:Type="String">5.102</Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="6">
-            <Data ss:Type="String">00040</Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="7">
-            <Data ss:Type="String">SUPERMERCADO CUCA DE ITANHAÉM LTDA      </Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="8">
             <Data ss:Type="String">PR</Data>
          </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="9">
-            <Data ss:Type="Number">4000.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="10">
-            <Data ss:Type="Number">3600.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="11">
-            <Data ss:Type="Number">432.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="12">
-            <Data ss:Type="Number">4000.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRight" ss:Index="13">
-            <Data ss:Type="Number">400.000000</Data>
+         <Cell ss:StyleID="numberRight" ss:Index="6">
+            <Data ss:Type="Number">3700.000000</Data>
          </Cell>
       </Row>
       <Row ss:Index="46"  >
          <Cell ss:StyleID="textLeft" ss:Index="1">
-            <Data ss:Type="String"></Data>
+            <Data ss:Type="String">00000038</Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="2">
-            <Data ss:Type="String"></Data>
+            <Data ss:Type="String">2019-02-04</Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="3">
-            <Data ss:Type="String"></Data>
+            <Data ss:Type="String">AUTORIZADA</Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="4">
-            <Data ss:Type="String"></Data>
+            <Data ss:Type="String">SUPERMERCADO IRMÃOS TEIXEIRA LTDA - EPP </Data>
          </Cell>
          <Cell ss:StyleID="textLeft" ss:Index="5">
+            <Data ss:Type="String">PR</Data>
+         </Cell>
+         <Cell ss:StyleID="numberRight" ss:Index="6">
+            <Data ss:Type="Number">3800.000000</Data>
+         </Cell>
+      </Row>
+      <Row ss:Index="47"  >
+         <Cell ss:StyleID="textLeft" ss:Index="1">
+            <Data ss:Type="String">00000039</Data>
+         </Cell>
+         <Cell ss:StyleID="textLeft" ss:Index="2">
+            <Data ss:Type="String">2019-02-03</Data>
+         </Cell>
+         <Cell ss:StyleID="textLeft" ss:Index="3">
+            <Data ss:Type="String">AUTORIZADA</Data>
+         </Cell>
+         <Cell ss:StyleID="textLeft" ss:Index="4">
+            <Data ss:Type="String">COMERCIAL ZARAGOZA IMPORTAÇÃO E EXPORTAÇ</Data>
+         </Cell>
+         <Cell ss:StyleID="textLeft" ss:Index="5">
+            <Data ss:Type="String">PR</Data>
+         </Cell>
+         <Cell ss:StyleID="numberRight" ss:Index="6">
+            <Data ss:Type="Number">3900.000000</Data>
+         </Cell>
+      </Row>
+      <Row ss:Index="48"  >
+         <Cell ss:StyleID="textLeft" ss:Index="1">
+            <Data ss:Type="String">00000040</Data>
+         </Cell>
+         <Cell ss:StyleID="textLeft" ss:Index="2">
+            <Data ss:Type="String">2019-02-02</Data>
+         </Cell>
+         <Cell ss:StyleID="textLeft" ss:Index="3">
+            <Data ss:Type="String">AUTORIZADA</Data>
+         </Cell>
+         <Cell ss:StyleID="textLeft" ss:Index="4">
+            <Data ss:Type="String">SUPERMERCADO CUCA DE ITANHAÉM LTDA      </Data>
+         </Cell>
+         <Cell ss:StyleID="textLeft" ss:Index="5">
+            <Data ss:Type="String">PR</Data>
+         </Cell>
+         <Cell ss:StyleID="numberRight" ss:Index="6">
+            <Data ss:Type="Number">0.000000</Data>
+         </Cell>
+      </Row>
+      <Row ss:Index="49"  >
+         <Cell ss:StyleID="textLeftBold" ss:Index="4">
+            <Data ss:Type="String">SubTotal</Data>
+         </Cell>
+         <Cell ss:StyleID="numberRightBold" ss:Index="6"   ss:Formula="=SUM(R[-10]C:R[-1]C)">
             <Data ss:Type="String"></Data>
          </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="6">
+      </Row>
+      <Row ss:Index="50"  >
+         <Cell ss:StyleID="textLeftBold" ss:Index="1">
             <Data ss:Type="String"></Data>
          </Cell>
-         <Cell ss:StyleID="textLeftBold" ss:Index="7">
-            <Data ss:Type="String">TOTAL ==&gt; 40 document(s)</Data>
-         </Cell>
-         <Cell ss:StyleID="textLeft" ss:Index="8">
+         <Cell ss:StyleID="textLeftBold" ss:Index="2">
             <Data ss:Type="String"></Data>
          </Cell>
-         <Cell ss:StyleID="numberRightBold" ss:Index="9"   ss:Formula="=SUM(R[-40]C:R[-1]C)">
+         <Cell ss:StyleID="textLeftBold" ss:Index="3">
             <Data ss:Type="String"></Data>
          </Cell>
-         <Cell ss:StyleID="numberRightBold" ss:Index="10">
-            <Data ss:Type="Number">73800.000000</Data>
+         <Cell ss:StyleID="textLeftBold" ss:Index="4">
+            <Data ss:Type="String">TOTAL ==&gt; 40 documentos</Data>
          </Cell>
-         <Cell ss:StyleID="numberRightBold" ss:Index="11">
-            <Data ss:Type="Number">8856.000000</Data>
+         <Cell ss:StyleID="textLeftBold" ss:Index="5">
+            <Data ss:Type="String"></Data>
          </Cell>
-         <Cell ss:StyleID="numberRightBold" ss:Index="12">
-            <Data ss:Type="Number">82000.000000</Data>
-         </Cell>
-         <Cell ss:StyleID="numberRightBold" ss:Index="13">
-            <Data ss:Type="Number">8200.000000</Data>
+         <Cell ss:StyleID="numberRightBold" ss:Index="6"   ss:Formula="=R[-34]C+R[-23]C+R[-12]C+R[-1]C">
+            <Data ss:Type="String"></Data>
          </Cell>
       </Row>
    </Table>
