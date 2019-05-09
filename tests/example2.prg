@@ -142,7 +142,7 @@ PROCEDURE Main()
 #endif
    sheet4:writeDateTime( 1, 1, DToC( Date() ), format4 )
    // Change the row1 height to 30 pixels
-   sheet4:rowHeight( 1, "30" )
+   sheet4:setRowHeight( 1, 30 )
    sheet4:writeString( 2, 1, "formatted text + cell color + merged + underlined", format4 )
    // Merge (2,1) with 4 columns to the right and 2 rows down
    sheet4:cellMerge( 2, 1, 4, 2 )
